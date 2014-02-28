@@ -1,6 +1,6 @@
 class CreateFavrecipes < ActiveRecord::Migration
   def change
-    create_table :favrecipes do |t|
+    create_table :favrecipe do |t|
       t.string :url
       t.string :name
       t.string :yummly_id

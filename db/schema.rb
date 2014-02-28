@@ -11,18 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228220959) do
+ActiveRecord::Schema.define(version: 20140228221344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "favrecipes", force: true do |t|
+  create_table "favrecipe", force: true do |t|
     t.string   "url"
     t.string   "name"
     t.string   "yummly_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "favrecipes_users", id: false, force: true do |t|
+    t.integer "favrecipe_id", null: false
+    t.integer "user_id",      null: false
+  end
+
+  add_index "favrecipes_users", ["favrecipe_id", "user_id"], name: "index_favrecipes_users_on_favrecipe_id_and_user_id", using: :btree
+  add_index "favrecipes_users", ["user_id", "favrecipe_id"], name: "index_favrecipes_users_on_user_id_and_favrecipe_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",               default: "", null: false
