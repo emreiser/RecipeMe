@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Favrecipe do
 
   describe "validations" do
-    it { should validate_presence_of(:user) }
+    it { should validate_presence_of(:users) }
   end
 
   describe "associations" do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228222025) do
+ActiveRecord::Schema.define(version: 20140301192447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 20140228222025) do
   create_table "baskets", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "baskets", ["user_id"], name: "index_baskets_on_user_id", using: :btree
 
   create_table "baskets_ingredients", id: false, force: true do |t|
     t.integer "basket_id",     null: false
@@ -35,7 +38,10 @@ ActiveRecord::Schema.define(version: 20140228222025) do
     t.string   "yummly_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "favrecipes", ["user_id"], name: "index_favrecipes_on_user_id", using: :btree
 
   create_table "favrecipes_users", id: false, force: true do |t|
     t.integer "favrecipe_id", null: false
@@ -64,8 +70,10 @@ ActiveRecord::Schema.define(version: 20140228222025) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "allergy"
+    t.integer  "favrecipe_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["favrecipe_id"], name: "index_users_on_favrecipe_id", using: :btree
 
 end

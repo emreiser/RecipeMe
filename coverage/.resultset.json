@@ -3,17 +3,23 @@
     "coverage": {
       "/Users/janicesmith/code_for_GA/RecipeMe/app/models/basket.rb": [
         1,
+        1,
+        1,
+        1,
         null
       ],
       "/Users/janicesmith/code_for_GA/RecipeMe/app/models/favrecipe.rb": [
+        1,
+        1,
         1,
         null
       ],
       "/Users/janicesmith/code_for_GA/RecipeMe/app/models/ingredient.rb": [
         1,
+        1,
         null
       ]
     },
-    "timestamp": 1393699049
+    "timestamp": 1393712243
   }
 }
