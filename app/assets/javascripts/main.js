@@ -18,6 +18,6 @@ RecipeMe.buildHomepage = function() {
 	$image_div.append($inner_img_content);
 	$content_div.append($image_div);
 	$content_btn.click(function(event) {
-		RecipeMe.buildBasket();
+		RecipeMe.getIngredients();
 	});
 };

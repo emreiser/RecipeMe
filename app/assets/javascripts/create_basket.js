@@ -1,6 +1,6 @@
 var RecipeMe = RecipeMe || {};
 
-RecipeMe.buildBasket = function() {
+RecipeMe.getIngredients = function() {
 	$.ajax({
 		url: '/ingredients',
 		type: 'GET',
@@ -9,7 +9,7 @@ RecipeMe.buildBasket = function() {
 	})
 	.done(function(data) {
 		console.log("success");
-		debugger;
+		//debugger;
 		RecipeMe.displayIngredients(data);
 	})
 	.fail(function(data) {
@@ -39,8 +39,8 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 			$spice_pane = $('<div class="tab-pane" id="spice"></div>');
 			$dairy_pane = $('<div class="tab-pane" id="dairy"></div>');
 			$starch_pane = $('<div class="tab-pane" id="starch"></div>'),
-			$ingred_div = $('<div class="col-md-8" id="ingred-div">'),
-			$basket_div = $('<div class="col-md-4" id="basket_div">'),
+			$ingred_div = $('<div class="col-md-8" id="ingred-div"><div class="page-header"><h1>Your Ingredients</div></div>'),
+			$basket_div = $('<div class="col-md-4" id="basket_div"><div class="page-header"><h1>Your Basket</h1></div></div>'),
 			$container_div = $('<div class="container">'),
 			i = 0,
 			l = ingredients_list.length;
@@ -56,7 +56,28 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 
 	for(; i < l; i++) {
 		var ingredient = ingredients_list[i];
-		$("#" + ingredient.ingred_type).append($('<button class="btn btn-success" data-toggle="button">' + ingredient.name + '</button>'));
+		$("#" + ingredient.ingred_type).append($('<button class="btn btn-success btn-block" data-toggle="button">' + ingredient.name + '</button>'));
 	};
 
+	this.createBasket();
 };
+
+RecipeMe.createBasket = function() {
+	$.ajax({
+		url: '/baskets/new',
+		type: 'GET',
+		dataType: 'json',
+	})
+	.done(function(data) {
+		debugger;
+		console.log("success");
+	})
+	.fail(function(data) {
+		debugger;
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+
+}
