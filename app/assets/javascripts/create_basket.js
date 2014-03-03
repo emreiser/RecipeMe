@@ -55,7 +55,6 @@ RecipeMe.handleData = function(basket) {
 }
 
 RecipeMe.renderIngredients = function(ingredients, basket_id) {
-	//element = $("#basket_" + basket_id).text("");
 	var i = 0,
 			ingredients_length = ingredients.length,
 			new_element,
