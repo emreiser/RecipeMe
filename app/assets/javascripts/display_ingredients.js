@@ -39,7 +39,7 @@ RecipeMe.displayIngredients = function(ingredients_list) {
       $dairy_pane = $('<div class="tab-pane" id="dairy"></div>'),
       $starch_pane = $('<div class="tab-pane" id="starch"></div>'),
       $ingred_div = $('<div class="col-md-8" id="ingred-div"><div class="page-header"><h1>Your Ingredients</div></div>'),
-      $basket_div = $('<div class="col-md-4" id="basket_div"><div class="page-header"><h1>Your Basket</h1></div></div>'),
+      $basket_container = $('<div class="col-md-4" id="basket-container"><div class="page-header"><h1>Your Basket</h1></div></div>'),
       $container_div = $('<div class="container">'),
       i = 0,
       l = ingredients_list.length,
@@ -50,7 +50,7 @@ RecipeMe.displayIngredients = function(ingredients_list) {
   $tab_content.append($protein_pane, $vegetable_pane, $sauce_pane, $spice_pane, $dairy_pane, $starch_pane);
   $nav_tabs.append($protein_tab, $vegetable_tab, $sauce_tab, $spice_tab, $dairy_tab, $starch_tab);
   $ingred_div.append($nav_tabs, $tab_content);
-  $container_div.append($ingred_div, $basket_div)
+  $container_div.append($ingred_div, $basket_container)
   $content.append($container_div);
 
 

@@ -8,7 +8,9 @@ RecipeMe.createBasket = function() {
 	})
 	.done(function(data) {
 		var basket = data;
-		//return RecipeMe.handleData(basket);
+		basket_element = $('<div id="basket_' + basket.id + '" >');
+		$("#basket-container").append(basket_element);
+		basket_element.text("");
 		$('button.ingredient').click(function(event) {
 			event.preventDefault();
 			var ingredient_id = event.target.id.split('_')[1];
@@ -35,7 +37,7 @@ RecipeMe.addIngredient = function(basket_id, ingredient_id) {
 		data: { basket: {id: basket_id, ingredient: ingredient_id }}
 	})
 	.done(function(data) {
-		debugger;
+		RecipeMe.renderIngredients(data, basket_id);
 		console.log("success");
 	})
 	.fail(function(data) {
@@ -51,3 +53,42 @@ RecipeMe.handleData = function(basket) {
 	var basket = basket;
 	return basket;
 }
+
+RecipeMe.renderIngredients = function(ingredients, basket_id) {
+	//element = $("#basket_" + basket_id).text("");
+	var i = 0,
+			ingredients_length = ingredients.length,
+			new_element,
+			element = $("#basket_" + basket_id).text("");
+
+	for(; i < ingredients_length; i++) {
+		var ingredient = ingredients[i];
+		if(ingredient.ingred_type === 'protein'){
+			new_element = $('<p class="text-danger basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+			new_element.text(ingredient.name);
+		} else if(ingredient.ingred_type === 'vegetable'){
+			new_element = $('<p class="text-success basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+			new_element.text(ingredient.name);
+		} else if(ingredient.ingred_type === 'sauce'){
+			new_element = $('<p class="text-primary basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+			new_element.text(ingredient.name);
+		} else if(ingredient.ingred_type === 'spice'){
+			new_element = $('<p class="text-info basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+			new_element.text(ingredient.name);
+		} else if(ingredient.ingred_type === 'starch'){
+			new_element = $('<p class="text-warning basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+			new_element.text(ingredient.name);
+		}else {
+			new_element = $('<p class="text-muted basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+			new_element.text(ingredient.name);
+		}
+		element.append(new_element);
+	}
+	$("#basket-container").append(element);
+};
+
+
+
+
+
+
