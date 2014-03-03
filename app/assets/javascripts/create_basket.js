@@ -25,7 +25,7 @@ RecipeMe.buildBasket = function() {
 
 RecipeMe.displayIngredients = function(ingredients_list) {
 	var $nav_tabs = $('<ul class="nav nav-tabs" id="myTab">'),
-			$protein_tab = $('<li class="active"><a href="#protein" data-toggle="tab">protein</a></li>'),
+			$protein_tab = $('<li class="active"><a href="#protein" data-toggle="tab">Protein</a></li>'),
 			$vegetable_tab = $('<li><a href="#vegetable" data-toggle="tab">Vegetable</a></li>'),
 			$sauce_tab = $('<li><a href="#sauce" data-toggle="tab">Sauce</a></li>'),
 			$spice_tab = $('<li><a href="#spice" data-toggle="tab">Spice</a></li>'),
@@ -33,7 +33,7 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 			$starch_tab = $('<li><a href="#starch" data-toggle="tab">Starch</a></li>'),
 			$content = $('#content'),
 			$tab_content = $('<div class="tab-content" id="myTabContent">'),
-			$protein_pane = $('<div class="tab-pane" id="protein"></div>');
+			$protein_pane = $('<div class="tab-pane active" id="protein"></div>');
 			$vegetable_pane = $('<div class="tab-pane" id="vegetable"></div>');
 			$sauce_pane = $('<div class="tab-pane" id="sauce"></div>');
 			$spice_pane = $('<div class="tab-pane" id="spice"></div>');
@@ -47,8 +47,15 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 	$content.text("");
 
 
+
+	$tab_content.append($protein_pane, $vegetable_pane, $sauce_pane, $spice_pane, $dairy_pane, $starch_pane);
+	$nav_tabs.append($protein_tab, $vegetable_tab, $sauce_tab, $spice_tab, $dairy_tab, $starch_tab);
+	$ingred_div.append($nav_tabs, $tab_content);
+	$content.append($ingred_div);
+
 	for(; i < l; i++) {
 		var ingredient = ingredients_list[i];
+		debugger;
 		// if (ingredient.ingred_type === "protein") {
 		// 	$protein_pane.append(ingredient.name);
 		// } else if (ingredient.ingred_type === "vegetable"){
@@ -60,10 +67,6 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 		$("#" + ingredient.ingred_type).append($('<div>' + ingredient.name + '</div>'));
 
 	};
-	$tab_content.append($protein_pane, $vegetable_pane, $sauce_pane, $spice_pane, $dairy_pane, $starch_pane);
-	$nav_tabs.append($protein_tab, $vegetable_tab, $sauce_tab, $spice_tab, $dairy_tab, $starch_tab);
-	$ingred_div.append($nav_tabs, $tab_content);
-	$content.append($ingred_div);
 
 
 
