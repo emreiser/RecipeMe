@@ -72,22 +72,22 @@ RecipeMe.renderIngredients = function(ingredients, basket_id) {
 
 RecipeMe.renderIngredient = function(container, ingredient) {
 	if(ingredient.ingred_type === 'protein'){
-		new_element = $('<p class="text-danger basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+		new_element = $('<p class="text-danger basket_ingredient lead" id="basket_ingredient_' + ingredient.id + '">');
 		new_element.text(ingredient.name);
 	} else if(ingredient.ingred_type === 'vegetable'){
-		new_element = $('<p class="text-success basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+		new_element = $('<p class="text-success basket_ingredient lead" id="basket_ingredient_' + ingredient.id + '">');
 		new_element.text(ingredient.name);
 	} else if(ingredient.ingred_type === 'sauce'){
-		new_element = $('<p class="text-primary basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+		new_element = $('<p class="text-primary basket_ingredient lead" id="basket_ingredient_' + ingredient.id + '">');
 		new_element.text(ingredient.name);
 	} else if(ingredient.ingred_type === 'spice'){
-		new_element = $('<p class="text-info basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+		new_element = $('<p class="text-info basket_ingredient lead" id="basket_ingredient_' + ingredient.id + '">');
 		new_element.text(ingredient.name);
 	} else if(ingredient.ingred_type === 'starch'){
-		new_element = $('<p class="text-warning basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+		new_element = $('<p class="text-warning basket_ingredient lead" id="basket_ingredient_' + ingredient.id + '">');
 		new_element.text(ingredient.name);
 	} else {
-		new_element = $('<p class="text-muted basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+		new_element = $('<p class="text-muted basket_ingredient lead" id="basket_ingredient_' + ingredient.id + '">');
 		new_element.text(ingredient.name);
 	}
 
