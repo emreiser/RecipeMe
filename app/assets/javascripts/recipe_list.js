@@ -52,7 +52,7 @@ RecipeMe.sort_recipe_score = function(data, ingredients_from_basket) {
   for(i = 0; i < array_length_recipes; i++) {
     var list_ingredients_of_recipe = recipe_from_api[i].ingredients;
     // compare to ingredients passed in
-    for (i = 0; i < list_ingredients_of_recipe.length; i++)
+    for (i = 0; i < list_ingredients_of_recipe.length; i++){
       // var sorted_recipe_score = 0
       // if the list of ingredients[i] from the returned is included in  ingredients_from_basket
       // add 1
