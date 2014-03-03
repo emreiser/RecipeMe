@@ -63,31 +63,43 @@ RecipeMe.renderIngredients = function(ingredients, basket_id) {
 
 	for(; i < ingredients_length; i++) {
 		var ingredient = ingredients[i];
-		if(ingredient.ingred_type === 'protein'){
-			new_element = $('<p class="text-danger basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
-			new_element.text(ingredient.name);
-		} else if(ingredient.ingred_type === 'vegetable'){
-			new_element = $('<p class="text-success basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
-			new_element.text(ingredient.name);
-		} else if(ingredient.ingred_type === 'sauce'){
-			new_element = $('<p class="text-primary basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
-			new_element.text(ingredient.name);
-		} else if(ingredient.ingred_type === 'spice'){
-			new_element = $('<p class="text-info basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
-			new_element.text(ingredient.name);
-		} else if(ingredient.ingred_type === 'starch'){
-			new_element = $('<p class="text-warning basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
-			new_element.text(ingredient.name);
-		}else {
-			new_element = $('<p class="text-muted basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
-			new_element.text(ingredient.name);
-		}
-		element.append(new_element);
+		RecipeMe.renderIngredient(element, ingredient);
+
+		// new_element.click(function(event){
+		// 	$(this).re
+		// })
 	}
-	$("#basket-container").append(element);
 };
 
+RecipeMe.renderIngredient = function(container, ingredient) {
+	if(ingredient.ingred_type === 'protein'){
+		new_element = $('<p class="text-danger basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+		new_element.text(ingredient.name);
+	} else if(ingredient.ingred_type === 'vegetable'){
+		new_element = $('<p class="text-success basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+		new_element.text(ingredient.name);
+	} else if(ingredient.ingred_type === 'sauce'){
+		new_element = $('<p class="text-primary basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+		new_element.text(ingredient.name);
+	} else if(ingredient.ingred_type === 'spice'){
+		new_element = $('<p class="text-info basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+		new_element.text(ingredient.name);
+	} else if(ingredient.ingred_type === 'starch'){
+		new_element = $('<p class="text-warning basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+		new_element.text(ingredient.name);
+	}else {
+		new_element = $('<p class="text-muted basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
+		new_element.text(ingredient.name);
+	}
 
+	container.append(new_element);
+};
+
+// RecipeMe.removeIngredient = function(ingredient_id) {
+// 	$('p.basket_ingredient').click(function(event){
+
+// 	});
+// }
 
 
 
