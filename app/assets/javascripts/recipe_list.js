@@ -60,8 +60,8 @@ RecipeMe.sort_recipe_score = function(data, ingredients_from_basket) {
     }
   }
 
-  //add to array
-  sorted_recipes_array.push(data);
+  //add to array  ???
+  sorted_recipes_array.push();
 
   // call render on array
   RecipeMe.render_all(sorted_recipes_array);
