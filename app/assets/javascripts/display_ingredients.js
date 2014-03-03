@@ -56,7 +56,20 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 
   for(; i < l; i++) {
     var ingredient = ingredients_list[i];
-    $("#" + ingredient.ingred_type).append($('<button class="btn btn-success btn-block ingredient" data-toggle="button" id="ingredient_' + ingredient.id + '">' + ingredient.name + '</button>'));
+    if (ingredient.ingred_type === "protein") {
+      $("#" + ingredient.ingred_type).append($('<button class="btn btn-danger btn-block ingredient" data-toggle="button" id="ingredient_' + ingredient.id + '">' + ingredient.name + '</button>'));
+    } else if (ingredient.ingred_type === "vegetable") {
+      $("#" + ingredient.ingred_type).append($('<button class="btn btn-success btn-block ingredient" data-toggle="button" id="ingredient_' + ingredient.id + '">' + ingredient.name + '</button>'));
+    } else if (ingredient.ingred_type === "sauce") {
+      $("#" + ingredient.ingred_type).append($('<button class="btn btn-primary btn-block ingredient" data-toggle="button" id="ingredient_' + ingredient.id + '">' + ingredient.name + '</button>'));
+    } else if (ingredient.ingred_type === "spice") {
+      $("#" + ingredient.ingred_type).append($('<button class="btn btn-info btn-block ingredient" data-toggle="button" id="ingredient_' + ingredient.id + '">' + ingredient.name + '</button>'));
+    } else if (ingredient.ingred_type === "starch") {
+      $("#" + ingredient.ingred_type).append($('<button class="btn btn-warning btn-block ingredient" data-toggle="button" id="ingredient_' + ingredient.id + '">' + ingredient.name + '</button>'));
+    } else {
+      $("#" + ingredient.ingred_type).append($('<button class="btn btn-default btn-block ingredient" data-toggle="button" id="ingredient_' + ingredient.id + '">' + ingredient.name + '</button>'));
+    }
+
   };
 
   this.createBasket();
