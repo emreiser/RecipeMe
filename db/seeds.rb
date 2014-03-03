@@ -1,5 +1,5 @@
 Ingredient.create(ingred_type: "protein", name: "steak")
-Ingredient.create(ingred_type: "protein", name: "chicker")
+Ingredient.create(ingred_type: "protein", name: "chicken")
 Ingredient.create(ingred_type: "protein", name: "pork")
 Ingredient.create(ingred_type: "protein", name: "beef")
 Ingredient.create(ingred_type: "protein", name: "sausage")

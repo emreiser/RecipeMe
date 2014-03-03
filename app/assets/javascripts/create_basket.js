@@ -33,17 +33,18 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 			$starch_tab = $('<li><a href="#starch" data-toggle="tab">Starch</a></li>'),
 			$content = $('#content'),
 			$tab_content = $('<div class="tab-content" id="myTabContent">'),
-			$protein_pane = $('<div class="tab-pane active" id="protein"></div>');
-			$vegetable_pane = $('<div class="tab-pane" id="vegetable"></div>');
-			$sauce_pane = $('<div class="tab-pane" id="sauce"></div>');
-			$spice_pane = $('<div class="tab-pane" id="spice"></div>');
-			$dairy_pane = $('<div class="tab-pane" id="dairy"></div>');
+			$protein_pane = $('<div class="tab-pane active" id="protein"></div>'),
+			$vegetable_pane = $('<div class="tab-pane" id="vegetable"></div>'),
+			$sauce_pane = $('<div class="tab-pane" id="sauce"></div>'),
+			$spice_pane = $('<div class="tab-pane" id="spice"></div>'),
+			$dairy_pane = $('<div class="tab-pane" id="dairy"></div>'),
 			$starch_pane = $('<div class="tab-pane" id="starch"></div>'),
 			$ingred_div = $('<div class="col-md-8" id="ingred-div"><div class="page-header"><h1>Your Ingredients</div></div>'),
 			$basket_div = $('<div class="col-md-4" id="basket_div"><div class="page-header"><h1>Your Basket</h1></div></div>'),
 			$container_div = $('<div class="container">'),
 			i = 0,
-			l = ingredients_list.length;
+			l = ingredients_list.length,
+			basket_id;
 
 	$content.text("");
 
@@ -56,7 +57,7 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 
 	for(; i < l; i++) {
 		var ingredient = ingredients_list[i];
-		$("#" + ingredient.ingred_type).append($('<button class="btn btn-success btn-block" data-toggle="button">' + ingredient.name + '</button>'));
+		$("#" + ingredient.ingred_type).append($('<button class="btn btn-success btn-block ingredient" data-toggle="button" id="ingredient_' + ingredient.id + '">' + ingredient.name + '</button>'));
 	};
 
 	this.createBasket();
@@ -64,9 +65,37 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 
 RecipeMe.createBasket = function() {
 	$.ajax({
-		url: '/baskets/new',
-		type: 'GET',
+		url: '/baskets',
+		type: 'POST',
 		dataType: 'json',
+	})
+	.done(function(data) {
+		var basket = data;
+		//return RecipeMe.handleData(basket);
+		$('button.ingredient').click(function(event) {
+			event.preventDefault();
+			var ingredient_id = event.target.id.split('_')[1];
+			RecipeMe.addIngredient(basket.id, ingredient_id);
+			return false;
+		});
+
+		console.log("success");
+	})
+	.fail(function(data) {
+		debugger;
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+};
+
+RecipeMe.addIngredient = function(basket_id, ingredient_id) {
+	$.ajax({
+		url: '/baskets/' + basket_id,
+		type: 'PUT',
+		dataType: 'json',
+		data: { basket: {id: basket_id, ingredient: ingredient_id }}
 	})
 	.done(function(data) {
 		debugger;
@@ -79,5 +108,9 @@ RecipeMe.createBasket = function() {
 	.always(function() {
 		console.log("complete");
 	});
+};
 
+RecipeMe.handleData = function(basket) {
+	var basket = basket;
+	return basket;
 }
