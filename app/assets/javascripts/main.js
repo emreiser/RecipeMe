@@ -13,7 +13,11 @@ RecipeMe.buildHomepage = function() {
 		$content_subtitle = $("<h2>We'll help you find recipes with the ingredients you have</h2>");
 		$content_btn = $("<button class='btn btn-primary btn-lg' id='enter-ingreds'>Enter Ingredients</button>")
 
+	$content_div.text("");
 	$inner_img_content.append($content_title, $content_subtitle, $content_btn);
 	$image_div.append($inner_img_content);
 	$content_div.append($image_div);
+	$content_btn.click(function(event) {
+		RecipeMe.buildBasket();
+	});
 };
