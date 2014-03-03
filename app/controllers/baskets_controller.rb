@@ -25,7 +25,13 @@ class BasketsController < ApplicationController
 
 	def update
 		@basket = Basket.find(params[:id])
-		@basket.ingredients << Ingredient.find(params[:basket][:ingredient])
+		ingredient = Ingredient.find(params[:basket][:ingredient])
+		if @basket.ingredients.include?(ingredient)
+			@basket.ingredients.delete(ingredient)
+			@basket.ingredients
+		else
+			@basket.ingredients << ingredient
+		end
 		render json: @basket.ingredients
 	end
 end

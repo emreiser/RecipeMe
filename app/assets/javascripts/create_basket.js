@@ -87,19 +87,41 @@ RecipeMe.renderIngredient = function(container, ingredient) {
 	} else if(ingredient.ingred_type === 'starch'){
 		new_element = $('<p class="text-warning basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
 		new_element.text(ingredient.name);
-	}else {
+	} else {
 		new_element = $('<p class="text-muted basket_ingredient" id="basket_ingredient_' + ingredient.id + '">');
 		new_element.text(ingredient.name);
 	}
 
 	container.append(new_element);
+	$('#basket_ingredient_' + ingredient.id).click(function(event){
+		var id;
+		id = container[0].id;
+		id = id.split("_")[1];
+
+		RecipeMe.removeIngredient(id, ingredient.id);
+	})
 };
 
-// RecipeMe.removeIngredient = function(ingredient_id) {
-// 	$('p.basket_ingredient').click(function(event){
+RecipeMe.removeIngredient = function(basket_id, ingredient_id) {
+	$.ajax({
+		url: '/baskets/' + basket_id,
+		type: 'PUT',
+		dataType: 'json',
+		data: { basket: {id: basket_id, ingredient: ingredient_id }}
+	})
+	.done(function(data) {
 
-// 	});
-// }
+		RecipeMe.renderIngredients(data, basket_id);
+		console.log("success");
+	})
+	.fail(function(data) {
+
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+}
 
 
 
