@@ -46,8 +46,6 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 
 	$content.text("");
 
-
-
 	$tab_content.append($protein_pane, $vegetable_pane, $sauce_pane, $spice_pane, $dairy_pane, $starch_pane);
 	$nav_tabs.append($protein_tab, $vegetable_tab, $sauce_tab, $spice_tab, $dairy_tab, $starch_tab);
 	$ingred_div.append($nav_tabs, $tab_content);
@@ -55,17 +53,7 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 
 	for(; i < l; i++) {
 		var ingredient = ingredients_list[i];
-		debugger;
-		// if (ingredient.ingred_type === "protein") {
-		// 	$protein_pane.append(ingredient.name);
-		// } else if (ingredient.ingred_type === "vegetable"){
-		// 	$vegetable_pane.append(ingredient.name);
-		// } else if (ingredient.ingred_type === "sauce") {
-		// 	$sauce_pane.append(ingredient.name);
-		// } else
-
-		$("#" + ingredient.ingred_type).append($('<div>' + ingredient.name + '</div>'));
-
+		$("#" + ingredient.ingred_type).append($('<button class="btn btn-success" data-toggle="button">' + ingredient.name + '</button>'));
 	};
 
 
