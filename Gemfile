@@ -33,7 +33,6 @@ end
 group :test do
 	gem 'simplecov', require: false
 	gem 'capybara'
-  gem 'database_cleaner'
   gem 'faker'
   gem 'launchy'
   gem 'shoulda-matchers'
