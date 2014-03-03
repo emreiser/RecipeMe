@@ -32,7 +32,7 @@ RecipeMe.request_recipies = function(ingredent_list_from_basket) {
   })
   .done(function(data) {
     console.log("got recipes")
-    RecipeMe.sort_recipe_score(data);
+    RecipeMe.sort_recipe_score(data,ingredent_list_from_basket);
   })
   .fail(function() {
     console.log("error");
@@ -43,8 +43,22 @@ RecipeMe.request_recipies = function(ingredent_list_from_basket) {
 };
 
 // sorts the recipies and store them in an array
-RecipeMe.sort_recipe_score = function(data) {
+RecipeMe.sort_recipe_score = function(data, ingredients_from_basket) {
+  var ingredients_from_basket = ingredients_from_basket,
+      recipe_from_api,
+      array_length_recipes = recipe_set_from_api.length;
   //sort the recipies ?
+  recipe_from_api = data.matches
+  for(i = 0; i < array_length_recipes; i++) {
+    var list_ingredients_of_recipe = recipe_from_api[i].ingredients;
+    // compare to ingredients passed in
+    for (i = 0; i < list_ingredients_of_recipe.length; i++)
+      // var sorted_recipe_score = 0
+      // if the list of ingredients[i] from the returned is included in  ingredients_from_basket
+      // add 1
+      // final score = (sorted_recipe_socre / list_ingredients_of_recipe.length) * 100
+    }
+  }
 
   //add to array
   sorted_recipes_array.push(data);
@@ -56,6 +70,10 @@ RecipeMe.sort_recipe_score = function(data) {
 
 // iterates and runs over the array to render
 RecipeMe.render_all = function(recipes) {
+  $('#recipes-index-content').empty();
+  var recipe_number = recipes.length, i;
+  for(i = 0; i < recipe_number; i++) {
+    this.render_one(recipes[i]);
   }
 };
 
