@@ -50,8 +50,9 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
     console.log("got recipes")
     //RecipeMe.sort_recipe_score(data,ingredent_list_from_basket);
   })
-  .fail(function() {
+  .fail(function(data) {
     console.log("error");
+    console.log(data);
   })
   .always(function() {
     console.log("complete");
