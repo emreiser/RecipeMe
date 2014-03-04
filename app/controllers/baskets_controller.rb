@@ -36,4 +36,13 @@ class BasketsController < ApplicationController
 		end
 		render json: @basket.ingredients
 	end
+
+	private
+
+  def basket_params
+    permitted = params.require(:basket).permit(:ingredient)
+    permitted[:user_id] = current_user.id
+      return permitted
+  end
+
 end
