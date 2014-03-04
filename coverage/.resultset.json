@@ -18,6 +18,12 @@
         1,
         null
       ],
+      "/Users/nevermore/Code/project_2/RecipeMe/app/controllers/home_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/nevermore/Code/project_2/RecipeMe/app/controllers/application_controller.rb": [
         1,
         null,
@@ -25,13 +31,56 @@
         1,
         null
       ],
-      "/Users/nevermore/Code/project_2/RecipeMe/app/controllers/home_controller.rb": [
+      "/Users/nevermore/Code/project_2/RecipeMe/app/controllers/ingredients_controller.rb": [
         1,
         1,
+        3,
+        3,
+        null,
+        null
+      ],
+      "/Users/nevermore/Code/project_2/RecipeMe/app/controllers/baskets_controller.rb": [
+        1,
+        1,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
+        1,
+        3,
+        0,
+        null,
+        3,
+        null,
+        3,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        0,
         null,
         null
       ]
     },
-    "timestamp": 1393964642
+    "timestamp": 1393972488
   }
 }

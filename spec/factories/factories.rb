@@ -4,8 +4,13 @@ FactoryGirl.define do
     password 'swordfish'
   end
 
-  factory :basket do
-    user
+  # factory :basket do
+  #   user
+  # end
+
+  factory :ingredient do
+    name { 'steak' }
+    ingred_type { 'protein' }
   end
 
 end
