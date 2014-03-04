@@ -27,10 +27,10 @@ class BasketsController < ApplicationController
 		@basket = Basket.find(params[:id])
 		ingredient = Ingredient.find(params[:basket][:ingredient])
 		if @basket.ingredients.include?(ingredient)
-			@basket.ingredients.delete(ingredient)
-			@basket.ingredients
+			 @basket.ingredients.delete(ingredient)
+			 @basket.ingredients
 		else
-			@basket.ingredients << ingredient
+			 @basket.ingredients << ingredient
 		end
 		render json: @basket.ingredients
 	end

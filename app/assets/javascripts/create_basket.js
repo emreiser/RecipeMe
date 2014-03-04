@@ -8,6 +8,7 @@ RecipeMe.createBasket = function() {
 	})
 	.done(function(data) {
 		var basket = data;
+		debugger;
 		basket_element = $('<div id="basket_' + basket.id + '" >');
 		$("#basket-container").append(basket_element);
 		basket_element.text("");
