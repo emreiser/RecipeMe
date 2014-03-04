@@ -1,24 +1,6 @@
 var RecipeMe = RecipeMe || {};
 
 RecipeMe.createBasket = function() {
-<<<<<<< HEAD
-	$.ajax({
-		url: '/baskets',
-		type: 'POST',
-		dataType: 'json',
-	})
-	.done(function(data) {
-		var basket = data;
-		debugger;
-		basket_element = $('<div id="basket_' + basket.id + '" >');
-		$("#basket-container").append(basket_element);
-		basket_element.text("");
-		$('button.ingredient').click(function(event) {
-			event.preventDefault();
-			var ingredient_id = event.target.id.split('_')[1];
-			RecipeMe.addIngredient(basket.id, ingredient_id);
-			return false;
-=======
 	var cookies = this.searchCookies(document.cookie),
 		one_d_cookies = [];
 
@@ -56,6 +38,7 @@ RecipeMe.createBasket = function() {
 				console.log("success");
 			})
 			.fail(function(data) {
+				debugger;
 				console.log("error");
 			});
 		} else {
@@ -100,7 +83,6 @@ RecipeMe.createBasket = function() {
 				return false;
 			});
 			console.log("success");
->>>>>>> 9e84e27cfcab8c942356502f67226fed6aa9cd12
 		});
 	}
 
