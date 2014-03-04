@@ -23,6 +23,7 @@ RecipeMe.createBasket = function() {
 			.done(function(data) {
 				var basket_element = $('<div class="basket-class" id="basket_' + basket_id + '" >');
 				RecipeMe.setCookie(basket_id);
+				RecipeMe.button_check(data);
 				$("#basket-container").append(basket_element);
 				basket_element.text("");
 				RecipeMe.renderIngredients(data, basket_id);

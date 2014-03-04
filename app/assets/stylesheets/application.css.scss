@@ -22,6 +22,13 @@ GENERAL STYLES
 	border-radius: 2px;
 	padding: 10px;
 }
+.dark-boxy {
+	background-color: rgba(0,0,0,0.7);
+	border: 1px solid #999;
+	border-radius: 2px;
+	padding: 10px;
+	color: white;
+}
 
 .center {
 	margin: 0 auto;
@@ -75,4 +82,24 @@ p.basket_ingredient {
 	&:hover {
 		cursor: pointer;
 	}
+}
+
+/*******************************
+RECIPES DISPLAY STYLES
+*******************************/
+.recipe {
+	height: 230px;
+	width: 30%;
+	margin-right: 3%;
+}
+
+.recipe-content {
+	position: absolute;
+	bottom: 0;
+	width: 98%;
+	margin: 0 auto;
+}
+
+.recipe-img {
+	width: 50%;
 }

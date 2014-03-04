@@ -1,19 +1,19 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/nevermore/Code/project_2/RecipeMe/app/models/basket.rb": [
+      "/Users/janicesmith/code_for_GA/RecipeMe/app/models/basket.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/nevermore/Code/project_2/RecipeMe/app/models/favrecipe.rb": [
+      "/Users/janicesmith/code_for_GA/RecipeMe/app/models/favrecipe.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/nevermore/Code/project_2/RecipeMe/app/models/ingredient.rb": [
+      "/Users/janicesmith/code_for_GA/RecipeMe/app/models/ingredient.rb": [
         1,
         1,
         null
@@ -25,12 +25,8 @@
         null
       ],
       "/Users/nevermore/Code/project_2/RecipeMe/app/controllers/application_controller.rb": [
-        1,
-        null,
-        null,
-        1,
-        null
-      ],
+
+
       "/Users/nevermore/Code/project_2/RecipeMe/app/controllers/ingredients_controller.rb": [
         1,
         1,
@@ -59,6 +55,9 @@
         3,
         null,
         null,
+=======
+      "/Users/janicesmith/code_for_GA/RecipeMe/app/controllers/home_controller.rb": [
+>>>>>>> 8c78e8e7f2c7d61ba1cec0b8c753c6ab699f37fe
         1,
         0,
         0,
@@ -81,6 +80,10 @@
         null
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1393972488
+=======
+    "timestamp": 1393967026
+>>>>>>> 8c78e8e7f2c7d61ba1cec0b8c753c6ab699f37fe
   }
 }
