@@ -9,6 +9,7 @@ RecipeMe.createBasket = function() {
 	.done(function(data) {
 		var basket = data;
 		basket_element = $('<div id="basket_' + basket.id + '" >');
+		RecipeMe.setCookie(basket.id);
 		$("#basket-container").append(basket_element);
 		basket_element.text("");
 		$('button.ingredient').click(function(event) {
@@ -122,6 +123,8 @@ RecipeMe.removeIngredient = function(basket_id, ingredient_id) {
 	});
 }
 
-
+RecipeMe.setCookie = function(id) {
+	document.cookie = "basket_id=" + escape(id);
+}
 
 
