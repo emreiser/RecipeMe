@@ -9,10 +9,25 @@ RecipeMe.button_check = function(ingredients){
     $("#find-recipe").removeClass('disabled');
   }
 };
+
 // parses out the ingredients
-RecipeMe.list_of_ingredients_for_search = function(basket) {
-  ingredient_list = basket.ingredients
-  RecipeMe.request_recipies(ingredient_list)
+RecipeMe.look_up_basket = function(basket_id){
+  $.ajax({
+    url: '/baskets/' + basket_id,
+    type: 'PUT',
+    dataType: 'json',
+    data: { basket: {id: basket_id }}
+  })
+  .done(function(data) {
+    console.log(data);
+  })
+  .fail(function(data) {
+
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
 };
 
 //Runs set_up_div_container and make API call for the recipies

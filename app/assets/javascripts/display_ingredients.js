@@ -82,10 +82,13 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 
   $('#find-recipe').click(function(event){
     var basket_element = $('.basket-class' ),
+        basket_id = basket_element[0].id.split('_')[1],
         recipe_container_element = '<div id="recipes-index-content">';
     $('#content').text("");
     $('#content').append(recipe_container_element);
-    alert("your id is " + basket_element[0].id.split('_')[1]);
+    alert("your id is " + basket_id);
+    RecipeMe.look_up_basket(basket_id);
+
   });
 };
 
