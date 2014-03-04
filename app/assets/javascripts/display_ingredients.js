@@ -5,15 +5,12 @@ RecipeMe.getIngredients = function() {
     url: '/ingredients',
     type: 'GET',
     dataType: 'json',
-    //data: {param1: 'value1'},
   })
   .done(function(data) {
     console.log("success");
-    //debugger;
     RecipeMe.displayIngredients(data);
   })
   .fail(function(data) {
-    debugger;
     console.log("error");
   })
   .always(function() {
@@ -78,7 +75,7 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 
   };
 
-  basket = this.createBasket();
+  basket = RecipeMe.createBasket();
 
   $('#find-recipe').click(function(event){
     var basket_element = $('.basket-class' ),
@@ -86,7 +83,6 @@ RecipeMe.displayIngredients = function(ingredients_list) {
         recipe_container_element = '<div id="recipes-index-content">';
     $('#content').text("");
     $('#content').append(recipe_container_element);
-    alert("your id is " + basket_id);
     RecipeMe.look_up_basket(basket_id);
 
   });

@@ -38,7 +38,6 @@ RecipeMe.createBasket = function() {
 				console.log("success");
 			})
 			.fail(function(data) {
-				debugger;
 				console.log("error");
 			});
 		} else {
@@ -47,7 +46,7 @@ RecipeMe.createBasket = function() {
 				type: 'POST',
 				dataType: 'json',
 			})
-			.done(function(data) {
+			.done(function(data){
 				var basket = data;
 				basket_element = $('<div class="basket-class" id="basket_' + basket.id + '" >');
 				RecipeMe.setCookie(basket.id);
@@ -102,7 +101,6 @@ RecipeMe.addIngredient = function(basket_id, ingredient_id) {
 
 	})
 	.fail(function(data) {
-		debugger;
 		console.log("error");
 	})
 	.always(function() {

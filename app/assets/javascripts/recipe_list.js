@@ -20,32 +20,35 @@ RecipeMe.look_up_basket = function(basket_id){
   })
   .done(function(data) {
     console.log(data);
+    RecipeMe.list_ingredients_of_basket(data);
   })
   .fail(function(data) {
-
     console.log("error");
   })
-  .always(function() {
-    console.log("complete");
-  });
+};
+
+//parse out list of ingredients
+RecipeMe.list_ingredients_of_basket = function(data){
+  debugger;
+  var i = 0, ingredient_list = "";
+  for(; i < data.length; i++) {
+      var ingredient = data[i];
+      ingredient_list += ingredient.name + "+";
+    }
+  RecipeMe.request_recipies(ingredient_list);
 };
 
 //Runs set_up_div_container and make API call for the recipies
 RecipeMe.request_recipies = function(ingredent_list_from_basket) {
-  RecipeMe.set_up_recipe_container();
-  var sorted_recipes_array = [],
-      app_key = ENV["APP_KEY"],
-      app_id = ENV["APP_ID"],
-      ingredent_list_from_basket = list_ingredients(basket);
   $.ajax({
-    url: 'http://api.yummly.com/v1/api/recipes?_app_id='+ api_id +'&_app_key='+ api_key +'&q='+ ingredent_list_from_basket,
+    url: '/yummly',
     type: 'GET',
     dataType: 'json',
-    // data:
+    data: {ingredients: ingredent_list_from_basket }
   })
   .done(function(data) {
     console.log("got recipes")
-    RecipeMe.sort_recipe_score(data,ingredent_list_from_basket);
+    //RecipeMe.sort_recipe_score(data,ingredent_list_from_basket);
   })
   .fail(function() {
     console.log("error");
@@ -56,30 +59,8 @@ RecipeMe.request_recipies = function(ingredent_list_from_basket) {
 };
 
 // sorts the recipies and store them in an array
-RecipeMe.sort_recipe_score = function(data, ingredients_from_basket) {
-  var ingredients_from_basket = ingredients_from_basket,
-      recipe_from_api,
-      array_length_recipes = recipe_set_from_api.length;
-  //sort the recipies ?
-  recipe_from_api = data.matches
-  for(i = 0; i < array_length_recipes; i++) {
-    var list_ingredients_of_recipe = recipe_from_api[i].ingredients;
-    // compare to ingredients passed in
-    for (i = 0; i < list_ingredients_of_recipe.length; i++){
-      // var sorted_recipe_score = 0
-      // if the list of ingredients[i] from the returned is included in  ingredients_from_basket
-      // add 1
-      // final score = (sorted_recipe_socre / list_ingredients_of_recipe.length) * 100
-    }
-  }
-
-  //add to array  ???
-  sorted_recipes_array.push();
-
-  // call render on array
-  RecipeMe.render_all(sorted_recipes_array);
-  return sorted_recipes_array;
-};
+// RecipeMe.sort_recipe_score = function(data, ingredients_from_basket) {
+// };
 
 // iterates and runs over the array to render
 RecipeMe.render_all = function(recipes) {
