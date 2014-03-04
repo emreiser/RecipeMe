@@ -17,8 +17,21 @@
         1,
         1,
         null
+      ],
+      "/Users/nevermore/Code/project_2/RecipeMe/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/nevermore/Code/project_2/RecipeMe/app/controllers/home_controller.rb": [
+        1,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1393953490
+    "timestamp": 1393954468
   }
 }
