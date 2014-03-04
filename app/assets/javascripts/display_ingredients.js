@@ -59,7 +59,9 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 
 
   for(; i < l; i++) {
-    var ingredient = ingredients_list[i];
+    var basket,
+        ingredient = ingredients_list[i];
+
     if (ingredient.ingred_type === "protein") {
       $("#" + ingredient.ingred_type).append($('<button class="btn btn-danger btn-block ingredient" data-toggle="button" id="ingredient_' + ingredient.id + '">' + ingredient.name + '</button>'));
     } else if (ingredient.ingred_type === "vegetable") {
@@ -76,13 +78,14 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 
   };
 
-  this.createBasket();
+  basket = this.createBasket();
 
   $('#find-recipe').click(function(event){
-    // creates the div #recipes-index-content
-    var recipe_container_element = '<div id="recipes-index-content">';
+    var basket_element = $('.basket-class' ),
+        recipe_container_element = '<div id="recipes-index-content">';
     $('#content').text("");
     $('#content').append(recipe_container_element);
+    alert("your id is " + basket_element[0].id.split('_')[1]);
   });
 };
 

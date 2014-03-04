@@ -9,7 +9,6 @@ RecipeMe.button_check = function(ingredients){
     $("#find-recipe").removeClass('disabled');
   }
 };
-
 // parses out the ingredients
 RecipeMe.list_of_ingredients_for_search = function(basket) {
   ingredient_list = basket.ingredients
