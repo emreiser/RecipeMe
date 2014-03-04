@@ -1,13 +1,5 @@
 var RecipeMe = RecipeMe || {};
 
-if (document.location.origin === "http://recipe-me.herokuapp.com") {
-	$(document).ready(function(){
-		RecipeMe.buildHomepage();
-	});
-}
-
-
-
 RecipeMe.buildHomepage = function() {
 	var $content_div = $('#content'),
 		$image_div = $('<div class="img-bg">'),
