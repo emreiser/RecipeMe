@@ -3,4 +3,5 @@ RecipeMe::Application.routes.draw do
   root to: 'home#index'
   resources :ingredients, only: :index
   resources :baskets
+  resources :yummly, only: :index
 end
