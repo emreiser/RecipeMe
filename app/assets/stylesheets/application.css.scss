@@ -45,3 +45,18 @@ HOMEPAGE STYLES
 .navbar {
 	margin-bottom: 0;
 }
+
+/*******************************
+BASKET STYLES
+*******************************/
+button.ingredient {
+	height: 50px;
+}
+
+p.basket_ingredient {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+	&:hover {
+		cursor: pointer;
+	}
+}
