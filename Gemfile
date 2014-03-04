@@ -38,5 +38,10 @@ group :test do
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  gem 'poltergeist'
+end
+
+group :development do
+  gem 'coffee-rails-source-maps'
 end
 

@@ -14,5 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
+/coverage
 .env
+/public/assets/source_maps
+/coverage
