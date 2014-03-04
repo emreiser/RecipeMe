@@ -22,6 +22,7 @@ RecipeMe.getIngredients = function() {
 
 };
 
+
 RecipeMe.displayIngredients = function(ingredients_list) {
   var $nav_tabs = $('<ul class="nav nav-tabs" id="myTab">'),
       $protein_tab = $('<li class="active"><a href="#protein" data-toggle="tab">Protein</a></li>'),

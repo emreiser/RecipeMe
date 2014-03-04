@@ -5,7 +5,6 @@
         1,
         1,
         1,
-        1,
         null
       ],
       "/Users/nevermore/Code/project_2/RecipeMe/app/models/favrecipe.rb": [
@@ -18,8 +17,21 @@
         1,
         1,
         null
+      ],
+      "/Users/nevermore/Code/project_2/RecipeMe/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/nevermore/Code/project_2/RecipeMe/app/controllers/home_controller.rb": [
+        1,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1393862867
+    "timestamp": 1393956042
   }
 }

@@ -27,6 +27,22 @@ GENERAL STYLES
 	margin: 0 auto;
 }
 /*******************************
+NAVBAR STYLES
+*******************************/
+.navbar {
+	height: 80px;
+}
+
+.navbar-brand {
+	padding: 30px 30px;
+}
+
+.navbar-nav > li > a {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+/*******************************
 HOMEPAGE STYLES
 *******************************/
 .img-bg {
