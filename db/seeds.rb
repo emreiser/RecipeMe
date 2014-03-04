@@ -36,7 +36,7 @@ Ingredient.create(ingred_type: "vegetable", name: "asparagus")
 Ingredient.create(ingred_type: "vegetable", name: "avocado")
 
 Ingredient.create(ingred_type: "sauce", name: "olive oil")
-Ingredient.create(ingred_type: "sauce", name: "vegetable il")
+Ingredient.create(ingred_type: "sauce", name: "vegetable oil")
 Ingredient.create(ingred_type: "sauce", name: "water")
 Ingredient.create(ingred_type: "sauce", name: "red wine vinegar")
 Ingredient.create(ingred_type: "sauce", name: "barbeque sauce")

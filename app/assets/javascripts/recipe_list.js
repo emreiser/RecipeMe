@@ -64,12 +64,26 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
 
 // iterates and runs over the array to render
 RecipeMe.renderAllRecipes = function(recipes) {
-  $('#content').text(""),
-    $container_div = $('<div class="container">');
+  $('#content').text("");
+  var $container_div = $('<div class="container">'),
+    l = recipes.length;
+
   $('#content').append($container_div);
-  var l = recipes.length, i = 0;
-  for(; i < l; i++) {
-    this.renderRecipe(recipes[i], $container_div);
+
+  if (l === 0) {
+    $container_div.append('<h1>Sorry, your search did not return any recipes</h1>');
+    $basket_button = $('<button class="btn btn-lg btn-warning">Modify your search</button>');
+    $container_div.append($basket_button);
+    $basket_button.click(function(event) {
+      event.preventDefault();
+      RecipeMe.getIngredients();
+      return false;
+    })
+  } else {
+    var l = recipes.length, i = 0;
+    for(; i < l; i++) {
+      this.renderRecipe(recipes[i], $container_div);
+    }
   }
 };
 
