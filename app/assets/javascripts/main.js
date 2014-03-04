@@ -1,8 +1,11 @@
 var RecipeMe = RecipeMe || {};
 
-$(document).ready(function(){
-	RecipeMe.buildHomepage();
-});
+if (document.location.origin === "http://localhost:3000") {
+	$(document).ready(function(){
+		RecipeMe.buildHomepage();
+	});
+}
+
 
 
 RecipeMe.buildHomepage = function() {
