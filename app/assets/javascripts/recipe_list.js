@@ -4,12 +4,11 @@
 
 var RecipeMe = RecipeMe || {};
 
-// creates the div #recipes-index-content
-RecipeMe.set_up_recipe_container = function() {
-  recipe_container_element = '<div id="recipes-index-content">';
-  $('#content').append(recipe_container_element);
+RecipeMe.button_check = function(ingredients){
+  if(ingredients.length !== 0){
+    $("#find-recipe").removeClass('disabled');
+  }
 };
-
 
 // parses out the ingredients
 RecipeMe.list_of_ingredients_for_search = function(basket) {

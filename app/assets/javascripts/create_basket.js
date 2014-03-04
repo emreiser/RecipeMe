@@ -21,12 +21,7 @@ RecipeMe.createBasket = function() {
 				data: { basket: {id: basket_id }}
 			})
 			.done(function(data) {
-				debugger;
-				// var ingredients = [];
-				// for (var i = 0, l = data.length; i < l; i++) {
-				// 	ingredients.push(data[i].name);
-				// }
-				basket_element = $('<div id="basket_' + basket_id + '" >');
+				var basket_element = $('<div id="basket_' + basket_id + '" >');
 				RecipeMe.setCookie(basket_id);
 				$("#basket-container").append(basket_element);
 				basket_element.text("");
@@ -98,6 +93,7 @@ RecipeMe.addIngredient = function(basket_id, ingredient_id) {
 	})
 	.done(function(data) {
 		RecipeMe.renderIngredients(data, basket_id);
+		RecipeMe.button_check(data);
 		console.log("success");
 	})
 	.fail(function(data) {
