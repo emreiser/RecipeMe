@@ -8,5 +8,4 @@ FactoryGirl.define do
     user
   end
 
-  factory :
 end
