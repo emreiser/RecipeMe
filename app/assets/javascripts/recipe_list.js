@@ -101,31 +101,39 @@ RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
     $recipe_content = $('<div class="recipe-content dark-boxy" id="recipe' + recipe.id + '">'),
     $recipe_content_inner_title = $('<div class="col-sm-10">'),
     $recipe_content_inner_favorite = $('<div class="col-sm-2">'),
-    $recipe_title = $("<h3>" + recipe.recipeName + "</h3>"),
+    $recipe_title = $("<a class='recipe_title'>" + recipe.recipeName + "</h3>"),
     $recipe_img = $('<img class="recipe-img" src=' + recipe.smallImageUrls[0] + '>'),
-    $recipe_favor = $('<span class="glyphicon glyphicon-star"></span>');;
+    $recipe_favor = $('<span class="glyphicon glyphicon-star"></span>');
 
+  // Add recipe to database
+  RecipeMe.addRecipe(recipe, function(data) {
+    if ($.inArray(recipe.id, favorite_array) !== -1){
+      $recipe_favor.addClass('favorite');
+    }
 
-  RecipeMe.addRecipe(recipe);
+    $recipe_favor.click(function(event) {
+      event.preventDefault();
+      $(this).toggleClass('favorite');
+      RecipeMe.add_favorite(recipe);
+      return false;
+    });
 
-  if ($.inArray(recipe.id, favorite_array) !== -1){
+    $recipe_content_inner_title.append($recipe_title);
+    $recipe_content_inner_favorite.append($recipe_favor);
+    $recipe_content.append($recipe_content_inner_title, $recipe_content_inner_favorite);
+    $recipe_div.append($recipe_img, $recipe_content);
 
-    $recipe_favor.addClass('favorite');
-  }
+    container.append($recipe_div);
 
-  $recipe_favor.click(function(event) {
-    event.preventDefault();
-    $(this).toggleClass('favorite');
-    RecipeMe.add_favorite(recipe);
-    return false;
+    $recipe_title.click(function(event) {
+      event.preventDefault();
+      debugger;
+      RecipeMe.look_up_recipe(data.id);
+      return false;
+    });
   });
 
-  $recipe_content_inner_title.append($recipe_title);
-  $recipe_content_inner_favorite.append($recipe_favor);
-  $recipe_content.append($recipe_content_inner_title, $recipe_content_inner_favorite);
-  $recipe_div.append($recipe_img, $recipe_content);
 
-  container.append($recipe_div);
 
 };
 
