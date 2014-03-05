@@ -93,26 +93,30 @@ RecipeMe.renderAllRecipes = function(recipes) {
 
 // renders the div for display on the index page
 RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
-  var $recipe_div = $('<div class="col-sm-4 recipe thumbnail">'),
-    $recipe_content = $('<div class="recipe-content dark-boxy" id="recipe' + recipe.id + '">'),
-    $recipe_content_inner_title = $('<div class="col-sm-10">'),
-    $recipe_content_inner_favorite = $('<div class="col-sm-2">'),
-    $recipe_title = $("<h3>" + recipe.recipeName + "</h3>"),
-    $recipe_img = $('<img class="recipe-img" src=' + recipe.smallImageUrls[0] + '>'),
-    $recipe_favor = $('<span class="glyphicon glyphicon-star"></span>');
+  var $recipe_div = $('<div class="col-sm-4 recipe thumbnail" id="recipe' + recipe.id + '">'),
+      $recipe_content = $('<div class="recipe-content dark-boxy" id="recipe' + recipe.id + '">'),
+      $recipe_content_inner_title = $('<div class="col-sm-10">'),
+      $recipe_content_inner_favorite = $('<div class="col-sm-2">'),
+      $recipe_title = $("<h3>" + recipe.recipeName + "</h3>"),
+      $recipe_img = $('<img class="recipe-img" src=' + recipe.smallImageUrls[0] + '>'),
+      $recipe_favor = $('<span class="glyphicon glyphicon-star data-toggle"></span>');
 
+  $recipe_div.text("");
   if ($.inArray(recipe.id, favorite_array)){
     $recipe_favor.addClass('favorite');
   };
 
-
-
+  $recipe_favor.click(function(event){
+    RecipeMe.toogle_favorite(recipe, favorite_array);
+  });
 
   $recipe_content_inner_title.append($recipe_title);
   $recipe_content_inner_favorite.append($recipe_favor);
   $recipe_content.append($recipe_content_inner_title, $recipe_content_inner_favorite);
   $recipe_div.append($recipe_img, $recipe_content);
-  container.append($recipe_div);
+  if($.contains($recipe_div, container)){
+    container.append($recipe_div);
+  };
 
 };
 

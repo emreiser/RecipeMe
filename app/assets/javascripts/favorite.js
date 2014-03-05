@@ -24,3 +24,15 @@ RecipeMe.get_favorites = function(){
   });
 
 }
+
+RecipeMe.toggle_favorite = function(recipe, favorite_array){
+  var $container_div = $('<div class="container">'),
+      index = favorite_array.indexOf(recipe.id);
+  if ($.inArray(recipe.id, favorite_array)){
+    favorite_array.remove(index);
+  } else {
+    favorite_array.push(recipe.id);
+  };
+
+  RecipeMe.renderRecipe(recipe, $container_div, favorite_array);
+}
