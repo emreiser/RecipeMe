@@ -89,7 +89,7 @@ RecipeMe.renderAllRecipes = function(recipes) {
       for(; i < l; i++) {
         RecipeMe.renderRecipe(recipes[i], $container_div, favorite_array);
       }
-    }
+    };
   });
 };
 
