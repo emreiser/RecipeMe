@@ -21,10 +21,9 @@ class RecipesController < ApplicationController
       else
         current_user.recipes << recipe
       end
-      binding.pry
       render json: current_user.recipes
     else
-      redirect_to new_user_session_path
+      render json: {redirect_to: new_user_session_path}
     end
   end
 

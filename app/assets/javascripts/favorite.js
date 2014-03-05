@@ -26,14 +26,10 @@ RecipeMe.add_favorite = function(recipe) {
     type: 'GET',
     dataType: 'json',
   })
-  .done(function() {
-    console.log("success");
-  })
-  .fail(function() {
-    console.log("error");
-  })
-  .always(function() {
-    console.log("complete");
+  .done(function(data) {
+    if (data.redirect_to) {
+      window.location.pathname = data.redirect_to;
+    }
   });
 
 }

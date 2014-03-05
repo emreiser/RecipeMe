@@ -111,6 +111,20 @@ RECIPES DISPLAY STYLES
 	width: 50%;
 }
 
+
+
+.glyphicon-star {
+	font-size: 20px;
+	margin-top: 30px;
+	&:hover {
+		cursor: pointer;
+		color: #cecece;
+	}
+}
+
 .favorite {
 	color: #dd9125;
+	&:hover {
+		color: #cc8014;
+	}
 }
