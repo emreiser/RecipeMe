@@ -12,7 +12,6 @@ RecipeMe.button_check = function(ingredients){
 
 // parses out the ingredients
 RecipeMe.look_up_basket = function(basket_id){
-  debugger;
   $.ajax({
     url: '/baskets/' + basket_id,
     type: 'PUT',
@@ -60,53 +59,58 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
   });
 };
 
-// sorts the recipies and store them in an array
-// RecipeMe.sort_recipe_score = function(data, ingredients_from_basket) {
-// };
-
 // iterates and runs over the array to render
 RecipeMe.renderAllRecipes = function(recipes) {
   $('#content').text("");
   var $container_div = $('<div class="container">'),
     l = recipes.length, favorite_array;
 
-  favorite_array = RecipeMe.get_favorites();
-
-  $('#content').append($container_div);
-
-  if (l === 0) {
-    $container_div.append('<h1>Sorry, your search did not return any recipes</h1>');
-    $basket_button = $('<button class="btn btn-lg btn-warning">Modify your search</button>');
-    $container_div.append($basket_button);
-    $basket_button.click(function(event) {
-      event.preventDefault();
-      RecipeMe.getIngredients();
-      return false;
-    })
-  } else {
-    var l = recipes.length, i = 0;
-    for(; i < l; i++) {
-      this.renderRecipe(recipes[i], $container_div, favorite_array);
+  RecipeMe.get_favorites(function(data) {
+    console.log("success");
+    var j = 0 , k = data.length,
+        favorite_array = [];
+    for (; j < j; j++){
+       favorite_array.push(data[j].id);
     }
-  }
+
+    $('#content').append($container_div);
+
+    if (l === 0) {
+      $container_div.append('<h1>Sorry, your search did not return any recipes</h1>');
+      $basket_button = $('<button class="btn btn-lg btn-warning">Modify your search</button>');
+      $container_div.append($basket_button);
+      $basket_button.click(function(event) {
+        event.preventDefault();
+        RecipeMe.getIngredients();
+        return false;
+      })
+    } else {
+      var l = recipes.length, i = 0;
+      for(; i < l; i++) {
+        RecipeMe.renderRecipe(recipes[i], $container_div, favorite_array);
+      }
+    }
+  });
 };
 
 // renders the div for display on the index page
 RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
-  var $recipe_div = $('<div class="col-sm-4 recipe thumbnail">'),
+  debugger;
+  var recipe = recipe,
+    $recipe_div = $('<div class="col-sm-4 recipe thumbnail">'),
     $recipe_content = $('<div class="recipe-content dark-boxy" id="recipe' + recipe.id + '">'),
     $recipe_content_inner_title = $('<div class="col-sm-10">'),
     $recipe_content_inner_favorite = $('<div class="col-sm-2">'),
     $recipe_title = $("<h3>" + recipe.recipeName + "</h3>"),
     $recipe_img = $('<img class="recipe-img" src=' + recipe.smallImageUrls[0] + '>'),
-    $recipe_favor = $('<span class="glyphicon glyphicon-star"></span>');
+    $recipe_favor = $('<span class="glyphicon glyphicon-star"></span>');;
 
-  if ($.inArray(recipe.id, favorite_array)){
+
+  RecipeMe.addRecipe(recipe);
+
+  if ($.inArray(recipe.id, favorite_array) !== -1){
     $recipe_favor.addClass('favorite');
-  };
-
-
-
+  }
 
   $recipe_content_inner_title.append($recipe_title);
   $recipe_content_inner_favorite.append($recipe_favor);
