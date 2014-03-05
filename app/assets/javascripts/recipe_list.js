@@ -12,6 +12,7 @@ RecipeMe.button_check = function(ingredients){
 
 // parses out the ingredients
 RecipeMe.look_up_basket = function(basket_id){
+  debugger;
   $.ajax({
     url: '/baskets/' + basket_id,
     type: 'PUT',
@@ -90,14 +91,20 @@ RecipeMe.renderAllRecipes = function(recipes) {
 
 // renders the div for display on the index page
 RecipeMe.renderRecipe = function(recipe, container) {
-  var $recipe_div = $('<div class="col-md-4 recipe thumbnail">'),
+  var $recipe_div = $('<div class="col-sm-4 recipe thumbnail">'),
     $recipe_content = $('<div class="recipe-content dark-boxy" id="recipe' + recipe.id + '">'),
+    $recipe_content_inner_title = $('<div class="col-sm-10">'),
+    $recipe_content_inner_favorite = $('<div class="col-sm-2">'),
     $recipe_title = $("<h3>" + recipe.recipeName + "</h3>"),
-    $recipe_img = $('<img class="recipe-img" src=' + recipe.smallImageUrls[0] + '>');
+    $recipe_img = $('<img class="recipe-img" src=' + recipe.smallImageUrls[0] + '>'),
+    $recipe_favor = $('<span class="glyphicon glyphicon-star"></span>');
 
-  $recipe_content.append($recipe_title);
+  $recipe_content_inner_title.append($recipe_title);
+  $recipe_content_inner_favorite.append($recipe_favor);
+  $recipe_content.append($recipe_content_inner_title, $recipe_content_inner_favorite);
   $recipe_div.append($recipe_img, $recipe_content);
   container.append($recipe_div);
+
 };
 
 

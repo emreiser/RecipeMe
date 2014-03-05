@@ -4,4 +4,5 @@ RecipeMe::Application.routes.draw do
   resources :ingredients, only: :index
   resources :baskets
   resources :yummly, only: :index
+  resources :user, only: :show
 end
