@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Favrecipe do
+describe Recipe do
 
   describe "validations" do
-    it { should validate_presence_of(:users) }
+    it { should validate_uniqueness_of(:yummlyid) }
   end
 
   describe "associations" do
