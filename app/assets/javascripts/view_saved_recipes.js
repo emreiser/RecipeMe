@@ -1,5 +1,4 @@
-$(document).ready(function() {
-	$('#view_saved_recipes').click(function(event) {
+$('#view_saved_recipes').click(function(event) {
 		event.preventDefault();
 		var $content = $('#content'),
 			$container = $('<div class="container">'),
@@ -16,9 +15,7 @@ $(document).ready(function() {
 		$content.append($container);
 
 		RecipeMe.get_favorites(function(data) {
-
 			$.each(data, function(index, value) {
-				debugger;
 				var $row = $('<tr>'),
 					$td = $('<td>'),
 					$table = $('.table-body');
@@ -28,5 +25,4 @@ $(document).ready(function() {
 			})
 		});
 		return false;
-	});
 });
