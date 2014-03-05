@@ -1,6 +1,12 @@
 class RecipesController < ApplicationController
   def index
     if user_signed_in?
+      if session[:favorite_recipe]
+        new_recipe = session[:favorite_recipe]
+        if !current_user.recipes.include? new_recipe
+          current_user.recipes << new_recipe
+        end
+      end
       @recipes = current_user.recipes
     else
       @recipes = []
@@ -21,10 +27,10 @@ class RecipesController < ApplicationController
       else
         current_user.recipes << recipe
       end
-      binding.pry
       render json: current_user.recipes
     else
-      redirect_to new_user_session_path
+      session[:favorite_recipe] = recipe
+      render json: {redirect_to: new_user_session_path}
     end
   end
 
