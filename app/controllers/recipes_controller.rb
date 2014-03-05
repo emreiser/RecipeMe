@@ -13,6 +13,21 @@ class RecipesController < ApplicationController
   	render json: @recipe
   end
 
+  def favorite
+    recipe = Recipe.find_by_yummlyid(params[:id])
+    if user_signed_in?
+      if current_user.recipes.uniq.include? recipe
+        current_user.recipes.delete(recipe)
+      else
+        current_user.recipes << recipe
+      end
+      binding.pry
+      render json: current_user.recipes
+    else
+      redirect_to new_user_session_path
+    end
+  end
+
   private
 
   def recipe_params

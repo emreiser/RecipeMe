@@ -21,6 +21,20 @@ RecipeMe.get_favorites = function(callback){
 };
 
 RecipeMe.add_favorite = function(recipe) {
-  if
+  $.ajax({
+    url: '/recipes/' + recipe.id,
+    type: 'GET',
+    dataType: 'json',
+  })
+  .done(function() {
+    console.log("success");
+  })
+  .fail(function() {
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
+
 }
 
