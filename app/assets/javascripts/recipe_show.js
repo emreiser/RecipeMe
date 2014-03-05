@@ -23,28 +23,32 @@ RecipeMe.look_up_recipe = function(recipe_id){
 
 // renders the div for display on the index page
 RecipeMe.render_recipe_show_info = function(recipe) {
-  var $recipe_show_div = $('<div id="recipe-show-div">'),
+  var $content = $('#content'),
+      $container = $('<div id="container">'),
       $recipe_show_header = $('<h1 class="page-header recipe-title">' +  recipe.title + '</h1>'),
       $recipe_show_img = $('<img class="recipe-show-img" src=' + recipe.imageurl + '>'),
-      $recipe_ingredient_list = RecipeMe.list_ingredients_for_recipe(recipe.ingredients),
+      $recipe_ingredient_list = RecipeMe.list_ingredients_for_recipe(recipe.ingeredientlist),
       $recipe_show_content = $('<div class="col-sm-8 recipe-show" id="recipe_' + recipe.id + '">'),
       $recipe_ingredient_list,
       $recipe_side_bar;
 
+  $content.text("");
   $recipe_side_bar = RecipeMe.render_side_bar(recipe);
-  $recipe_ingredient_list = RecipeMe.list_ingredients_for_recipe(recipe.ingredients);
+  //$recipe_ingredient_list = RecipeMe.list_ingredients_for_recipe(recipe.ingredients);
 
   $recipe_show_header.append($recipe_show_img)
   $recipe_show_content.append($recipe_show_header);
   $recipe_show_content.append($recipe_ingredient_list);
-  $recipe_show_div.append($recipe_show_content, $recipe_side_bar);
-  container.append($recipe_show_div);
+  $container.append($recipe_show_content, $recipe_side_bar);
+  $content.append($container);
 
 };
 
 // renderd the lsit of recipes
 RecipeMe.list_ingredients_for_recipe = function(ingredients){
-  var i = 0,$recipe_ingredient_list = $('<ul class="recipe_ingredients">');
+  var ingredients = ingredients.split(':'),
+    i = 0,
+    $recipe_ingredient_list = $('<ul class="recipe_ingredients">');
   for(; i < ingredients.length; i++) {
       var $list_element, ingredient = ingredients[i];
       $list_element = $('<li>' + ingredients[i] + '</li>');

@@ -52,10 +52,16 @@
 
       RecipeMe.get_favorites(function(data) {
         $.each(data, function(index, value) {
+          debugger;
           var $row = $('<tr>'),
             $td = $('<td>'),
             $table = $('.table-body');
           $td.append('<p class="lead"><a href="" id="' + value.yummlyid + '">' + value.title + '</a></p>');
+          $td.click(function(event) {
+            event.preventDefault();
+            RecipeMe.render_recipe_show_info(value);
+            return false;
+          })
           $row.append($td);
           $table.append($row);
         })
