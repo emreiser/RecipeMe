@@ -112,6 +112,13 @@ RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
     $recipe_favor.addClass('favorite');
   }
 
+  $recipe_favor.click(function(event) {
+    event.preventDefault();
+    $(this).toggleClass('favorite');
+    RecipeMe.add_favorite(recipe);
+    return false;
+  });
+
   $recipe_content_inner_title.append($recipe_title);
   $recipe_content_inner_favorite.append($recipe_favor);
   $recipe_content.append($recipe_content_inner_title, $recipe_content_inner_favorite);
