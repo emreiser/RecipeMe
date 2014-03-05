@@ -95,7 +95,7 @@ RecipeMe.renderAllRecipes = function(recipes) {
 
 // renders the div for display on the index page
 RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
-  debugger;
+
   var recipe = recipe,
     $recipe_div = $('<div class="col-sm-4 recipe thumbnail">'),
     $recipe_content = $('<div class="recipe-content dark-boxy" id="recipe' + recipe.id + '">'),
@@ -111,6 +111,13 @@ RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
   if ($.inArray(recipe.id, favorite_array) !== -1){
     $recipe_favor.addClass('favorite');
   }
+
+  $recipe_favor.click(function(event) {
+    event.preventDefault();
+    $(this).toggleClass('favorite');
+    RecipeMe.add_favorite(recipe);
+    return false;
+  });
 
   $recipe_content_inner_title.append($recipe_title);
   $recipe_content_inner_favorite.append($recipe_favor);

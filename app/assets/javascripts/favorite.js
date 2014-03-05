@@ -18,4 +18,8 @@ RecipeMe.get_favorites = function(callback){
     console.log("complete");
   });
 
+};
+
+RecipeMe.add_favorite = function(recipe) {
+  if
 }
