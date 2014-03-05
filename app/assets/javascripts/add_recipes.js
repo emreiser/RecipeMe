@@ -1,6 +1,6 @@
 var RecipeMe = RecipeMe || {}
 
-RecipeMe.addRecipe = function(recipe) {
+RecipeMe.addRecipe = function(recipe, callback) {
 	$.ajax({
 		url: '/recipes',
 		type: 'POST',
@@ -8,6 +8,7 @@ RecipeMe.addRecipe = function(recipe) {
 		data: {recipe: {title: recipe.recipeName, imageurl: recipe.smallImageUrls[0], ingredientlist: recipe.ingredients.join(':'), yummlyid: recipe.id}},
 	})
 	.done(function(data) {
+		callback(data);
 		console.log("success");
 	})
 	.fail(function() {
