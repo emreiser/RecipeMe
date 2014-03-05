@@ -108,7 +108,6 @@ RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
 
   RecipeMe.addRecipe(recipe);
 
-  debugger;
   if ($.inArray(recipe.id, favorite_array) !== -1){
 
     $recipe_favor.addClass('favorite');
