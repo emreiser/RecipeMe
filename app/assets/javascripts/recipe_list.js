@@ -69,8 +69,8 @@ RecipeMe.renderAllRecipes = function(recipes) {
     console.log("success");
     var j = 0 , k = data.length,
         favorite_array = [];
-    for (; j < j; j++){
-       favorite_array.push(data[j].id);
+    for (; j < k; j++){
+       favorite_array.push(data[j].yummlyid);
     }
 
     $('#content').append($container_div);
@@ -108,7 +108,9 @@ RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
 
   RecipeMe.addRecipe(recipe);
 
+  debugger;
   if ($.inArray(recipe.id, favorite_array) !== -1){
+
     $recipe_favor.addClass('favorite');
   }
 
