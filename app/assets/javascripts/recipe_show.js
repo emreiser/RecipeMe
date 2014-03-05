@@ -22,22 +22,22 @@ RecipeMe.look_up_recipe = function(recipe_id){
 };
 
 // renders the div for display on the index page
-RecipeMe.render_recipe_show_info = function(data) {
+RecipeMe.render_recipe_show_info = function(recipe) {
   var $recipe_show_div = $('<div id="recipe-show-div">'),
-      $recipe_show_header = $('<h1 class="page-header recipe-title">' +  recipe.name + '</h1>'),
+      $recipe_show_header = $('<h1 class="page-header recipe-title">' +  recipe.title + '</h1>'),
       $recipe_show_img = $('<img class="recipe-show-img" src=' + recipe.imageurl + '>'),
       $recipe_ingredient_list = RecipeMe.list_ingredients_for_recipe(recipe.ingredients),
-      $recipe_show_content = $('<div class="class="col-sm-8 recipe-show" id="recipe' + recipe.id + '">'),
+      $recipe_show_content = $('<div class="col-sm-8 recipe-show" id="recipe_' + recipe.id + '">'),
       $recipe_ingredient_list,
       $recipe_side_bar;
 
-  $recipe_side_bar = RecipeMe.render_side_bar(recipe.ingredients);
+  $recipe_side_bar = RecipeMe.render_side_bar(recipe);
   $recipe_ingredient_list = RecipeMe.list_ingredients_for_recipe(recipe.ingredients);
 
   $recipe_show_header.append($recipe_show_img)
   $recipe_show_content.append($recipe_show_header);
   $recipe_show_content.append($recipe_ingredient_list);
-  $recipe_show_div.append($recipe_show_content, );
+  $recipe_show_div.append($recipe_show_content, $recipe_side_bar);
   container.append($recipe_show_div);
 
 };
@@ -54,8 +54,13 @@ RecipeMe.list_ingredients_for_recipe = function(ingredients){
 };
 
 
-RecipeMe.render_side_bar = function(){
+RecipeMe.render_side_bar = function(recipe){
+  var $fav_button,
+      $recipe_external_url = $('<button class="btn btn-lg-primary" id="recipe_url_' + recipe.id + '">' + 'http://www.yummly.com/recipe/external/' + recipe.ymmlyid + '</button>'),
+      $side_bar_div = $('<div class="col-sm-3 recipe-side-bar" id="recipe_side_bar' + recipe.id + '">');
 
+    $side_bar_div.append($recipe_external_url, $fav_button);
+  return $side_bar_div;
 }
 
 
