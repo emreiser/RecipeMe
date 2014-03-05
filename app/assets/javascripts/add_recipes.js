@@ -5,7 +5,7 @@ RecipeMe.addRecipe = function(recipe) {
 		url: '/recipes',
 		type: 'POST',
 		dataType: 'json',
-		data: {recipe: {title: recipe.recipeName, imageurl: recipe.smallImageUrls[0], ingeredientlist: recipe.ingredients.join(':'), yummlyid: recipe.id}},
+		data: {recipe: {title: recipe.recipeName, imageurl: recipe.smallImageUrls[0], ingredientlist: recipe.ingredients.join(':'), yummlyid: recipe.id}},
 	})
 	.done(function(data) {
 		console.log("success");

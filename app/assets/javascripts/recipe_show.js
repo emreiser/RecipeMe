@@ -28,7 +28,7 @@ RecipeMe.render_recipe_show_info = function(recipe) {
       $container_header = $('<div class="page-header">'),
       $recipe_title = $('<h1 class="recipe-title">' +  recipe.title + '</h1>'),
       $recipe_img = $('<img class="recipe-show-img" src=' + recipe.imageurl + '>'),
-      $recipe_ingredient_list = RecipeMe.list_ingredients_for_recipe(recipe.ingeredientlist),
+      $recipe_ingredient_list = RecipeMe.list_ingredients_for_recipe(recipe.ingredientlist),
       $recipe_show_content = $('<div class="col-sm-8 recipe-show" id="recipe_' + recipe.id + '">'),
       $recipe_ingredient_list,
       $recipe_side_bar;
