@@ -18,3 +18,9 @@
 .env
 /public/assets/source_maps
 /coverage
+
+test.png
+test2.png
+test3.png
+test4.png
+test5.png

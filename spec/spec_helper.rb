@@ -6,6 +6,7 @@ require 'rspec/autorun'
 require 'simplecov'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
+Capybara.default_wait_time = 5
 
 SimpleCov.start 'rails'
 
@@ -26,8 +27,13 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
   end
 
+  config.before(:suite, :js => true) do
+    puts "Loading seeds"
+    load "#{Rails.root}/db/seeds.rb"
+  end
+
   config.before(:each, :js => true) do
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :truncation, {except: ['ingredients']}
   end
 
   config.before(:each) do

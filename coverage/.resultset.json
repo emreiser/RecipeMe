@@ -1,19 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/janicesmith/code_for_GA/RecipeMe/app/models/basket.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
       "/Users/janicesmith/code_for_GA/RecipeMe/app/models/ingredient.rb": [
-        1,
-        1,
-        null
-      ],
-      "/Users/janicesmith/code_for_GA/RecipeMe/app/models/recipe.rb": [
-        1,
         1,
         1,
         null
@@ -34,8 +22,8 @@
       "/Users/janicesmith/code_for_GA/RecipeMe/app/controllers/ingredients_controller.rb": [
         1,
         1,
-        2,
-        2,
+        1,
+        1,
         null,
         null
       ],
@@ -51,12 +39,12 @@
         null,
         null,
         1,
-        2,
+        1,
         0,
         null,
-        2,
+        1,
         null,
-        2,
+        1,
         null,
         null,
         1,
@@ -66,17 +54,17 @@
         null,
         null,
         1,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
         0,
         0,
         null,
-        0,
+        1,
         null,
         null,
-        0,
+        1,
         null,
         null,
         1,
@@ -88,8 +76,14 @@
         null,
         null,
         null
+      ],
+      "/Users/janicesmith/code_for_GA/RecipeMe/app/models/basket.rb": [
+        1,
+        1,
+        1,
+        null
       ]
     },
-    "timestamp": 1394038124
+    "timestamp": 1394055011
   }
 }
