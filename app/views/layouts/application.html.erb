@@ -8,14 +8,14 @@
 </head>
 <body>
 <%= render "layouts/header" %>
-<div class="container">
+<div class="container flash">
 	<% if flash[:error] %>
 		<div class="alert alert-danger">
 			<%= flash[:error] %>
 		</div>
-	<% elsif flash[:notice] %>
+	<% elsif flash.now[:notice] %>
 		<div class="alert alert-success">
-			<%= flash[:notice] %>
+			<%= flash.now[:notice] %>
 		</div>
 	<% elsif flash[:unverified] %>
 		<div class="alert alert-warning">
