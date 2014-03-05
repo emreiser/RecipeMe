@@ -1,6 +1,10 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = current_user.recipes || []
+    if user_signed_in?
+      @recipes = current_user.recipes
+    else
+      @recipes = []
+    end
     render json: @recipes
   end
   def create
