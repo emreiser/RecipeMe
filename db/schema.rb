@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140301192447) do
+ActiveRecord::Schema.define(version: 20140305155610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,31 +32,28 @@ ActiveRecord::Schema.define(version: 20140301192447) do
   add_index "baskets_ingredients", ["basket_id", "ingredient_id"], name: "index_baskets_ingredients_on_basket_id_and_ingredient_id", using: :btree
   add_index "baskets_ingredients", ["ingredient_id", "basket_id"], name: "index_baskets_ingredients_on_ingredient_id_and_basket_id", using: :btree
 
-  create_table "favrecipes", force: true do |t|
-    t.string   "url"
-    t.string   "name"
-    t.string   "yummly_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
-  add_index "favrecipes", ["user_id"], name: "index_favrecipes_on_user_id", using: :btree
-
-  create_table "favrecipes_users", id: false, force: true do |t|
-    t.integer "favrecipe_id", null: false
-    t.integer "user_id",      null: false
-  end
-
-  add_index "favrecipes_users", ["favrecipe_id", "user_id"], name: "index_favrecipes_users_on_favrecipe_id_and_user_id", using: :btree
-  add_index "favrecipes_users", ["user_id", "favrecipe_id"], name: "index_favrecipes_users_on_user_id_and_favrecipe_id", using: :btree
-
   create_table "ingredients", force: true do |t|
     t.string   "name"
     t.string   "ingred_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "recipes", force: true do |t|
+    t.string  "title"
+    t.text    "imageurl"
+    t.text    "ingeredientlist"
+    t.string  "yummlyid"
+    t.integer "users_id"
+  end
+
+  create_table "recipes_users", id: false, force: true do |t|
+    t.integer "recipe_id", null: false
+    t.integer "user_id",   null: false
+  end
+
+  add_index "recipes_users", ["recipe_id", "user_id"], name: "index_recipes_users_on_recipe_id_and_user_id", using: :btree
+  add_index "recipes_users", ["user_id", "recipe_id"], name: "index_recipes_users_on_user_id_and_recipe_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",               default: "", null: false
@@ -70,10 +67,10 @@ ActiveRecord::Schema.define(version: 20140301192447) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "allergy"
-    t.integer  "favrecipe_id"
+    t.integer  "recipe_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["favrecipe_id"], name: "index_users_on_favrecipe_id", using: :btree
+  add_index "users", ["recipe_id"], name: "index_users_on_recipe_id", using: :btree
 
 end
