@@ -78,14 +78,15 @@ RecipeMe.render_side_bar = function(recipe){
         $fav_button.text('Remove favorite');
       }
     }
+    $fav_button.click(function(event) {
+      event.preventDefault();
+      RecipeMe.add_favorite(this_recipe);
+      RecipeMe.render_recipe_show_info(this_recipe);
+      return false;
+    });
   });
 
-  $fav_button.click(function(event) {
-    event.preventDefault();
-    RecipeMe.add_favorite(this_recipe);
-    RecipeMe.render_recipe_show_info(this_recipe);
-    return false;
-  });
+
 
   $side_bar_div.append($side_bar_header, $fav_button, $recipe_external_url);
   return $side_bar_div;
