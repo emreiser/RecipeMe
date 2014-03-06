@@ -13,10 +13,20 @@ class RecipesController < ApplicationController
     end
     render json: @recipes
   end
+
   def create
   	@recipe = Recipe.new(recipe_params)
-  	@recipe.save
-  	render json: @recipe
+  	if @recipe.save
+  	 render json: @recipe
+    else
+      @recipe = Recipe.find_by_yummlyid(recipe_params[:yummlyid])
+      render json: @recipe
+    end
+  end
+
+  def show
+    @recipe = Recipe.find(params[:id])
+    render json: @recipe
   end
 
   def favorite

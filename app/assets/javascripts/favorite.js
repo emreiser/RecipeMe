@@ -23,7 +23,7 @@ RecipeMe.get_favorites = function(callback){
 RecipeMe.add_favorite = function(recipe) {
   $.ajax({
     url: '/recipes/' + recipe.id,
-    type: 'GET',
+    type: 'POST',
     dataType: 'json',
   })
   .done(function(data) {

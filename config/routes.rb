@@ -5,6 +5,6 @@ RecipeMe::Application.routes.draw do
   resources :baskets
   resources :yummly, only: :index
 
-  resources :recipes, only: [:index, :create]
-  get '/recipes/:id', to: 'recipes#favorite', as: 'favorite_recipe'
+  resources :recipes, only: [:index, :create, :show]
+  post '/recipes/:id', to: 'recipes#favorite', as: 'favorite_recipe'
 end
