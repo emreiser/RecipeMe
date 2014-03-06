@@ -9,15 +9,7 @@ RecipeMe.get_favorites = function(callback){
   })
   .done(function(data) {
     callback(data);
-  })
-  .fail(function(data) {
-    console.log("error");
-
-  })
-  .always(function() {
-    console.log("complete");
   });
-
 };
 
 RecipeMe.add_favorite = function(recipe) {
@@ -39,6 +31,5 @@ RecipeMe.add_favorite = function(recipe) {
       window.location.pathname = data.redirect_to;
     }
   });
-
-}
+};
 

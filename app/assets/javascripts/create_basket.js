@@ -32,15 +32,8 @@ RecipeMe.createBasket = function() {
 					var ingredient_id = event.target.id.split('_')[1];
 					RecipeMe.addIngredient(basket_id, ingredient_id);
 					RecipeMe.button_check(ingredient_id);
-					debugger;
-
 					return false;
 				});
-				//RecipeMe.renderIngredients(data, basket_id);
-				console.log("success");
-			})
-			.fail(function(data) {
-				console.log("error");
 			});
 		} else {
 			$.ajax({
@@ -58,10 +51,8 @@ RecipeMe.createBasket = function() {
 					event.preventDefault();
 					var ingredient_id = event.target.id.split('_')[1];
 					RecipeMe.addIngredient(basket.id, ingredient_id);
-
 					return false;
 				});
-				console.log("success");
 			});
 		}
 	} else {
@@ -72,7 +63,6 @@ RecipeMe.createBasket = function() {
 		})
 		.done(function(data) {
 			var basket = data;
-			
 			RecipeMe.setCookie(basket.id);
 			$("#basket-container").append(basket_element);
 			basket_element.text("");
@@ -80,13 +70,10 @@ RecipeMe.createBasket = function() {
 				event.preventDefault();
 				var ingredient_id = event.target.id.split('_')[1];
 				RecipeMe.addIngredient(basket.id, ingredient_id);
-
 				return false;
 			});
-			console.log("success");
 		});
 	}
-
 };
 
 
@@ -100,21 +87,13 @@ RecipeMe.addIngredient = function(basket_id, ingredient_id) {
 	.done(function(data) {
 		RecipeMe.renderIngredients(data, basket_id);
 		RecipeMe.button_check(data);
-		console.log("success");
-
-	})
-	.fail(function(data) {
-		console.log("error");
-	})
-	.always(function() {
-		console.log("complete");
 	});
 };
 
 RecipeMe.handleData = function(basket) {
 	var basket = basket;
 	return basket;
-}
+};
 
 RecipeMe.renderIngredients = function(ingredients, basket_id) {
 	var i = 0,
@@ -156,8 +135,7 @@ RecipeMe.renderIngredient = function(container, ingredient) {
 		id = id.split("_")[1];
 
 		RecipeMe.removeIngredient(id, ingredient.id);
-	})
-
+	});
 };
 
 RecipeMe.removeIngredient = function(basket_id, ingredient_id) {
@@ -168,18 +146,8 @@ RecipeMe.removeIngredient = function(basket_id, ingredient_id) {
 		data: { basket: {id: basket_id, ingredient: ingredient_id }}
 	})
 	.done(function(data) {
-
 		RecipeMe.renderIngredients(data, basket_id);
 		RecipeMe.button_check(data);
-
-		console.log("success");
-	})
-	.fail(function(data) {
-
-		console.log("error");
-	})
-	.always(function() {
-		console.log("complete");
 	});
 };
 
@@ -192,10 +160,8 @@ RecipeMe.searchCookies = function(cookies) {
 		cookie_split_array = [],
 		i = 0,
 		l = cookie_array.length;
-
 	for (; i < l; i++) {
 		cookie_split_array.push(cookie_array[i].split('='));
 	}
 	return cookie_split_array;
-
 };

@@ -7,16 +7,8 @@ RecipeMe.getIngredients = function() {
     dataType: 'json',
   })
   .done(function(data) {
-    console.log("success");
     RecipeMe.displayIngredients(data);
-  })
-  .fail(function(data) {
-    console.log("error");
-  })
-  .always(function() {
-    console.log("complete");
   });
-
 };
 
 
@@ -38,10 +30,10 @@ RecipeMe.displayIngredients = function(ingredients_list) {
       $starch_pane = $('<div class="tab-pane" id="starch"></div>'),
       $ingred_div = $('<div class="col-sm-8" id="ingred-div"><div class="page-header"><h1>Your Ingredients</div></div>'),
       $basket_container = $('<div class="col-md-4" id="basket-container"><div class="page-header"><h1>Your Basket</h1></div></div>'),
-      $basket_button = $('<button id="find-recipe" class="btn btn-block btn-custom margin-bottom ingredient disabled">Find Recipes</button>'),
+      $basket_button = $('<button id="find-recipe" class="btn btn-block btn-custom margin-bottom disabled">Find Recipes</button>'),
       $find_recipe_button_div = $('<div id="find-recipe-button-div" class="col-sm-6">'),
       $basket_button_div = $('<div id="basket-button-div" class="col-sm-12">'),
-      $clear_basket_button = $('<button id="clear-basket" class="btn btn-block btn-danger ingredient">Clear Basket</button>'),
+      $clear_basket_button = $('<button id="clear-basket" class="btn btn-block btn-danger ">Clear Basket</button>'),
       $clear_basket_button_div = $('<div id="clear-basket-button-div" class="col-sm-6">'),
       $container_div = $('<div class="container">'),
       $div_row = $('<div class="row">'),
@@ -62,7 +54,6 @@ RecipeMe.displayIngredients = function(ingredients_list) {
   $container_div.append($ingred_div, $basket_container);
   $content.append($container_div);
 
-
   for(; i < l; i++) {
     var basket,
         ingredient = ingredients_list[i];
@@ -80,27 +71,27 @@ RecipeMe.displayIngredients = function(ingredients_list) {
     } else {
       $("#" + ingredient.ingred_type).append($('<button class="btn btn-default btn-block ingredient" data-toggle="button" id="ingredient_' + ingredient.id + '">' + ingredient.name + '</button>'));
     }
-
   };
 
   basket = RecipeMe.createBasket();
 
   $('#find-recipe').click(function(event){
+    event.preventDefault();
     var basket_element = $('.basket-class' ),
         basket_id = basket_element[0].id.split('_')[1];
-        // debugger;
         recipe_container_element = '<div id="recipes-index-content">';
     $('#content').text("");
     $('#content').append(recipe_container_element);
     RecipeMe.look_up_basket(basket_id);
-
+    return false;
   });
 
-
   $('#clear-basket').click(function(event){
+    event.preventDefault();
     var basket_element = $('.basket-class' ),
         basket_id = basket_element[0].id.split('_')[1];
     RecipeMe.clear_basket(basket_id);
+    return false;
   });
 
 };

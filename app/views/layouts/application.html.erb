@@ -23,6 +23,11 @@
 		</div>
 	<% end %>
 </div>
+<!-- Ajax Loading Spinner-->
+<div id="ajaxSpinnerContainer" class='centered'>
+	<%= image_tag 'ajax-loader.gif', class: 'ajax-spinner', id: 'ajaxSpinnerImage', title: 'working...' %>
+
+</div>
 <div id="content">
 <%= yield %>
 </div>
