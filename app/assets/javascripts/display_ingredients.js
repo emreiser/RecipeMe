@@ -36,13 +36,15 @@ RecipeMe.displayIngredients = function(ingredients_list) {
       $spice_pane = $('<div class="tab-pane" id="spice"></div>'),
       $dairy_pane = $('<div class="tab-pane" id="dairy"></div>'),
       $starch_pane = $('<div class="tab-pane" id="starch"></div>'),
-      $ingred_div = $('<div class="col-md-8" id="ingred-div"><div class="page-header"><h1>Your Ingredients</div></div>'),
+      $ingred_div = $('<div class="col-sm-8" id="ingred-div"><div class="page-header"><h1>Your Ingredients</div></div>'),
       $basket_container = $('<div class="col-md-4" id="basket-container"><div class="page-header"><h1>Your Basket</h1></div></div>'),
-      $basket_button = $('<button id="find-recipe" class="btn btn-block btn-custom margin-bottom disabled">Find Recipes</button>'),
-      $basket_button_div = $('<div id="basket-button-div">'),
-      $clear_basket_button = $('<button id="clear-basket" class="btn btn-block btn-custom">Clear Basket</button>'),
-      $clear_basket_button_div = $('<div id="clear-basket-button-div">'),
+      $basket_button = $('<button id="find-recipe" class="btn btn-block btn-custom margin-bottom ingredient disabled">Find Recipes</button>'),
+      $find_recipe_button_div = $('<div id="find-recipe-button-div" class="col-sm-6">'),
+      $basket_button_div = $('<div id="basket-button-div" class="col-sm-12">'),
+      $clear_basket_button = $('<button id="clear-basket" class="btn btn-block btn-danger ingredient">Clear Basket</button>'),
+      $clear_basket_button_div = $('<div id="clear-basket-button-div" class="col-sm-6">'),
       $container_div = $('<div class="container">'),
+      $div_row = $('<div class="row">'),
       i = 0,
       l = ingredients_list.length,
       basket_id;
@@ -53,8 +55,10 @@ RecipeMe.displayIngredients = function(ingredients_list) {
   $nav_tabs.append($protein_tab, $vegetable_tab, $sauce_tab, $spice_tab, $dairy_tab, $starch_tab);
   $ingred_div.append($nav_tabs, $tab_content);
   $clear_basket_button_div.append($clear_basket_button);
-  $basket_button_div.append($basket_button);
-  $basket_container.append($basket_button_div, $clear_basket_button_div);
+  $find_recipe_button_div.append($basket_button);
+  $div_row.append($find_recipe_button_div, $clear_basket_button_div)
+  $basket_button_div.append($div_row);
+  $basket_container.append($basket_button_div);
   $container_div.append($ingred_div, $basket_container);
   $content.append($container_div);
 
