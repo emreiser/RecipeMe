@@ -124,7 +124,7 @@ RecipeMe.renderAllRecipes = function(recipes) {
 RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
 
   var recipe = recipe,
-    recipe_image = recipe.smallImageUrls[0] || '/assets/recipeme.png',
+    recipe_image = recipe.smallImageUrls[0] || '/recipeme.png',
     $recipe_div = $('<div class="col-sm-4 recipe thumbnail">'),
     $recipe_content = $('<div class="recipe-content dark-boxy" id="recipe' + recipe.id + '">'),
     $recipe_content_inner_title = $('<div class="col-sm-10">'),
