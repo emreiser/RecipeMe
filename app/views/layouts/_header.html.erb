@@ -38,11 +38,12 @@
   $('#view_saved_recipes').click(function(event) {
       event.preventDefault();
       var $content = $('#content'),
-        $container = $('<div class="container">'),
-        $inner_content = $('<div class="col-sm-8">'),
-        $header = $('<div class="page-header"><h1>Saved Recipes</h1></div>'),
-        $table = $('<table class="table">'),
-        $table_body = $('<tbody class="table-body">');
+          $container = $('<div class="container">'),
+          $inner_content = $('<div class="col-sm-8">'),
+          $header = $('<div class="page-header"><h1>Saved Recipes</h1></div>'),
+          $table = $('<table class="table">'),
+          $table_body = $('<tbody class="table-body">'),
+          $flash = $('.flash');
 
       $content.text("");
       $inner_content.append($header);
@@ -50,6 +51,7 @@
       $inner_content.append($table);
       $container.append($inner_content);
       $content.append($container);
+      $flash.text("");
 
       RecipeMe.get_favorites(function(data) {
         $.each(data, function(index, value) {
