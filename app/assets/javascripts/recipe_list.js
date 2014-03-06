@@ -63,11 +63,18 @@ RecipeMe.renderAllRecipes = function(recipes) {
   $('#content').text("");
   var $container_div = $('<div class="container">'),
                    l = recipes.length,
-       $header_title = $('<h1 class="recipe-index-header"> Here are Your Recipes </h1>'),
-         $header_div = $('<divclass="page-header">'),
+       $header_title = $('<h1 class="recipe-index-header">Recipe Results</h1>'),
+         $header_div = $('<div class="page-header">'),
+         $back_to_basket = $('<a href="" id="back_to_basket">Modify search</a>'),
          favorite_array;
 
-  $header_div.append($header_title);
+  $back_to_basket.click(function(event) {
+    event.preventDefault();
+    RecipeMe.getIngredients();
+    return false;
+  });
+
+  $header_div.append($header_title, $back_to_basket);
   $container_div.append($header_div);
   $container_div.append(RecipeMe.renderAttribution());
   $('#content').append($container_div);
