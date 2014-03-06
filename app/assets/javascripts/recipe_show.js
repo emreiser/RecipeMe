@@ -13,7 +13,6 @@ RecipeMe.look_up_recipe = function(recipe_id){
   })
   .done(function(data) {
     console.log("got the recipe");
-
     RecipeMe.render_recipe_show_info(data);
   })
   .fail(function(data) {
@@ -23,7 +22,8 @@ RecipeMe.look_up_recipe = function(recipe_id){
 
 // renders the div for display on the index page
 RecipeMe.render_recipe_show_info = function(recipe) {
-  var $content = $('#content'),
+  var current_recipe = recipe,
+      $content = $('#content'),
       $container = $('<div class="container">'),
       $container_header = $('<div class="page-header">'),
       $recipe_title = $('<h1 class="recipe-title">' +  recipe.title + '</h1>'),
@@ -35,7 +35,7 @@ RecipeMe.render_recipe_show_info = function(recipe) {
       $recipe_side_bar;
 
   $content.text("");
-  $recipe_side_bar = RecipeMe.render_side_bar(recipe);
+  $recipe_side_bar = RecipeMe.render_side_bar(current_recipe);
 
   $container_header.append($recipe_img, $recipe_title);
   $recipe_show_content.append($container_header);
@@ -68,12 +68,30 @@ RecipeMe.list_ingredients_for_recipe = function(ingredients){
 
 
 RecipeMe.render_side_bar = function(recipe){
-  var $fav_button,
-      $recipe_external_url = $('<a class="btn btn-block btn-custom" id="recipe_url_' + recipe.id + '" href="http://www.yummly.com/recipe/external/' + recipe.yummlyid + '">View Recipe</a>'),
+  var this_recipe = recipe,
+      $fav_button = $('<button class="btn btn-custom btn-block">Add favorite</button>'),
+      $recipe_external_url = $('<a class="btn btn-block btn-custom margin-bottom" id="recipe_url_' + recipe.id + '" href="http://www.yummly.com/recipe/external/' + recipe.yummlyid + '">View Recipe</a>'),
       $side_bar_div = $('<div class="col-sm-3 col-sm-offset-1 recipe-side-bar" id="recipe_side_bar' + recipe.id + '">'),
       $side_bar_header = $('<div class="page-header side-bar-header"></div>');
 
-    $side_bar_div.append($side_bar_header, $recipe_external_url);
+  RecipeMe.get_favorites(function(data) {
+    for(var i = 0, l = data.length; i < l; i++) {
+      if (data[i].yummlyid === recipe.yummlyid) {
+        $fav_button.removeClass('btn-custom');
+        $fav_button.addClass('btn-danger');
+        $fav_button.text('Remove favorite');
+      }
+    }
+  });
+
+  $fav_button.click(function(event) {
+    event.preventDefault();
+    RecipeMe.add_favorite(this_recipe);
+    RecipeMe.render_recipe_show_info(this_recipe);
+    return false;
+  });
+
+  $side_bar_div.append($side_bar_header, $fav_button, $recipe_external_url);
   return $side_bar_div;
 }
 

@@ -30,7 +30,11 @@ class RecipesController < ApplicationController
   end
 
   def favorite
-    recipe = Recipe.find_by_yummlyid(params[:id])
+    if params[:number] != ''
+      recipe = Recipe.find(params[:id])
+    else
+      recipe = Recipe.find_by_yummlyid(params[:id])
+    end
     if user_signed_in?
       if current_user.recipes.uniq.include? recipe
         current_user.recipes.delete(recipe)

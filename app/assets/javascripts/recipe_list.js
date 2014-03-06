@@ -127,7 +127,6 @@ RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
 
     $recipe_title.click(function(event) {
       event.preventDefault();
-      debugger;
       RecipeMe.look_up_recipe(data.id);
       return false;
     });
