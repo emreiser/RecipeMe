@@ -121,6 +121,8 @@ RECIPES DISPLAY STYLES
 	bottom: 0;
 	width: 98%;
 	margin: 0 auto;
+	height: 80px;
+	overflow: hidden;
 }
 
 .recipe-img {
@@ -155,4 +157,8 @@ RECIPES DISPLAY STYLES
 	padding-top: 57px;
 }
 
-
+a.recipe_title {
+	cursor: pointer;
+	color: #cc8014;
+	font-size: 21px;
+}
