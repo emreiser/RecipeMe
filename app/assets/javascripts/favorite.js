@@ -18,7 +18,6 @@ RecipeMe.add_favorite = function(recipe) {
   } else {
     id_number = null;
   }
-  debugger;
   $.ajax({
     url: '/recipes/' + recipe.id,
     type: 'POST',

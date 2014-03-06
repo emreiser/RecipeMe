@@ -97,7 +97,6 @@ RecipeMe.renderAllRecipes = function(recipes) {
     for (; j < k; j++){
        favorite_array.push(data[j].yummlyid);
     }
-    //debugger;
 
     if (recipes.length === 0) {
       $container_div.text("");
