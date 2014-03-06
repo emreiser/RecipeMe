@@ -67,6 +67,29 @@ RecipeMe.renderAllRecipes = function(recipes) {
          $header_div = $('<divclass="page-header">'),
          favorite_array;
 
+  $header_div.append($header_title);
+  $container_div.append($header_div);
+  $container_div.append(RecipeMe.renderAttribution());
+  $('#content').append($container_div);
+
+
+  if (l === 0) {
+    $container_div.text("");
+    $container_div.append('<h1>Sorry, your search did not return any recipes</h1>');
+    $basket_button = $('<button class="btn btn-lg btn-warning">Modify your search</button>');
+    $container_div.append($basket_button);
+    $basket_button.click(function(event) {
+      event.preventDefault();
+      RecipeMe.getIngredients();
+      return false;
+    })
+  } else {
+    var l = recipes.length, i = 0;
+    for(; i < l; i++) {
+      RecipeMe.renderRecipe(recipes[i], $container_div, favorite_array);
+    }
+  };
+
   RecipeMe.get_favorites(function(data) {
     console.log("success");
     var j = 0 , k = data.length,
@@ -75,11 +98,8 @@ RecipeMe.renderAllRecipes = function(recipes) {
        favorite_array.push(data[j].yummlyid);
     }
 
-    $header_div.append($header_title);
-    $container_div.append($header_div);
-    $('#content').append($container_div);
-
     if (l === 0) {
+      $container_div.text("");
       $container_div.append('<h1>Sorry, your search did not return any recipes</h1>');
       $basket_button = $('<button class="btn btn-lg btn-warning">Modify your search</button>');
       $container_div.append($basket_button);
@@ -96,7 +116,7 @@ RecipeMe.renderAllRecipes = function(recipes) {
     };
   });
 
-  RecipeMe.renderAttribution();
+
 };
 
 // renders the div for display on the index page
@@ -145,7 +165,7 @@ RecipeMe.renderAttribution = function() {
       $container = $('.container');
 
   $yummly_attribution.append($yummly_attribution_content);
-  $container.append($yummly_attribution);
+  return $yummly_attribution;
 };
 
 
