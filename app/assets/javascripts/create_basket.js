@@ -42,8 +42,8 @@ RecipeMe.createBasket = function() {
 				dataType: 'json',
 			})
 			.done(function(data){
-				var basket = data;
-				basket_element = $('<div class="basket-class" id="basket_' + basket.id + '" >');
+				var basket = data,
+					basket_element = $('<div class="basket-class" id="basket_' + basket.id + '" >');
 				RecipeMe.setCookie(basket.id);
 				$("#basket-container").append(basket_element);
 				basket_element.text("");
@@ -59,10 +59,12 @@ RecipeMe.createBasket = function() {
 		$.ajax({
 			url: '/baskets',
 			type: 'POST',
+			beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 			dataType: 'json',
 		})
 		.done(function(data) {
-			var basket = data;
+			var basket = data,
+				basket_element = $('<div class="basket-class" id="basket_' + basket.id + '" >');
 			RecipeMe.setCookie(basket.id);
 			$("#basket-container").append(basket_element);
 			basket_element.text("");
@@ -71,7 +73,7 @@ RecipeMe.createBasket = function() {
 				var ingredient_id = event.target.id.split('_')[1];
 				RecipeMe.addIngredient(basket.id, ingredient_id);
 				return false;
-			});
+				})
 		});
 	}
 };

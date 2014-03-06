@@ -95,9 +95,3 @@ RecipeMe.displayIngredients = function(ingredients_list) {
   });
 
 };
-
-
-
-
-
-
