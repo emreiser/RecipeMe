@@ -21,7 +21,6 @@ RecipeMe.look_up_basket = function(basket_id){
     data: { basket: {id: basket_id }}
   })
   .done(function(data) {
-    console.log(data);
     RecipeMe.list_ingredients_of_basket(data);
   });
 };
@@ -58,15 +57,9 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
   })
   .done(function(data) {
     RecipeMe.renderAllRecipes(data.matches);
-    console.log(data);
   })
   .fail(function(data) {
-    console.log("error");
-    console.log(data);
   })
-  .always(function() {
-    console.log("complete");
-  });
 };
 
 // iterates and runs over the array to render
@@ -91,7 +84,6 @@ RecipeMe.renderAllRecipes = function(recipes) {
   $('#content').append($container_div);
 
   RecipeMe.get_favorites(function(data) {
-    console.log("success");
     var j = 0 , k = data.length,
         favorite_array = [];
     for (; j < k; j++){

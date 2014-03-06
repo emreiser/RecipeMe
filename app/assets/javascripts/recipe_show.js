@@ -12,7 +12,6 @@ RecipeMe.look_up_recipe = function(recipe_id){
     dataType: 'json'
   })
   .done(function(data) {
-    console.log("got the recipe");
     RecipeMe.render_recipe_show_info(data);
   });
 };
