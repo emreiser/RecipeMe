@@ -16,6 +16,9 @@ class RecipesController < ApplicationController
 
   def create
   	@recipe = Recipe.new(recipe_params)
+    if (@recipe.imageurl == nil) || (@recipe.imageurl == "")
+      @recipe.imageurl = ActionController::Base.helpers.asset_path('recipeme.png')
+    end
   	if @recipe.save
   	 render json: @recipe
     else
