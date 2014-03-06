@@ -1,37 +1,37 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/janicesmith/code_for_GA/RecipeMe/app/models/basket.rb": [
+      "/Users/michaelstone/General Assembly/Code/project_2/RecipeMe/app/models/basket.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/janicesmith/code_for_GA/RecipeMe/app/models/ingredient.rb": [
+      "/Users/michaelstone/General Assembly/Code/project_2/RecipeMe/app/models/ingredient.rb": [
         1,
         1,
         null
       ],
-      "/Users/janicesmith/code_for_GA/RecipeMe/app/models/recipe.rb": [
+      "/Users/michaelstone/General Assembly/Code/project_2/RecipeMe/app/models/recipe.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/janicesmith/code_for_GA/RecipeMe/app/controllers/home_controller.rb": [
+      "/Users/michaelstone/General Assembly/Code/project_2/RecipeMe/app/controllers/home_controller.rb": [
         1,
         1,
         null,
         null
       ],
-      "/Users/janicesmith/code_for_GA/RecipeMe/app/controllers/application_controller.rb": [
+      "/Users/michaelstone/General Assembly/Code/project_2/RecipeMe/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/Users/janicesmith/code_for_GA/RecipeMe/app/controllers/ingredients_controller.rb": [
+      "/Users/michaelstone/General Assembly/Code/project_2/RecipeMe/app/controllers/ingredients_controller.rb": [
         1,
         1,
         3,
@@ -39,7 +39,7 @@
         null,
         null
       ],
-      "/Users/janicesmith/code_for_GA/RecipeMe/app/controllers/baskets_controller.rb": [
+      "/Users/michaelstone/General Assembly/Code/project_2/RecipeMe/app/controllers/baskets_controller.rb": [
         1,
         1,
         0,
@@ -90,6 +90,6 @@
         null
       ]
     },
-    "timestamp": 1394132489
+    "timestamp": 1394134203
   }
 }
