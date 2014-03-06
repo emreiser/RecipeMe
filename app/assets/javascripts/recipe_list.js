@@ -7,6 +7,8 @@ var RecipeMe = RecipeMe || {};
 RecipeMe.button_check = function(ingredients){
   if(ingredients.length !== 0){
     $("#find-recipe").removeClass('disabled');
+  } else {
+    $("#find-recipe").addClass('disabled');
   }
 };
 
@@ -36,7 +38,7 @@ RecipeMe.clear_basket = function(basket_id) {
   .done(function(data) {
     console.log(data);
     RecipeMe.renderIngredients([], basket_id);
-
+    RecipeMe.button_check([]);
   });
 }
 

@@ -32,6 +32,7 @@ RecipeMe.createBasket = function() {
 					var ingredient_id = event.target.id.split('_')[1];
 					RecipeMe.addIngredient(basket_id, ingredient_id);
 					RecipeMe.button_check(ingredient_id);
+					debugger;
 
 					return false;
 				});
