@@ -93,6 +93,14 @@ p.basket_ingredient {
 	border: 1px solid #dd9125;
 }
 
+.ingredient {
+	font-size: 21px;
+}
+
+.nav-tabs > li {
+	font-size: 21px;
+}
+
 /*******************************
 RECIPES INDEX STYLES
 *******************************/
@@ -111,7 +119,7 @@ RECIPES INDEX STYLES
 RECIPES DISPLAY STYLES
 *******************************/
 .recipe {
-	height: 270px;
+	height: 210px;
 	width: 30%;
 	margin-right: 3%;
 }
@@ -131,7 +139,7 @@ RECIPES DISPLAY STYLES
 
 .glyphicon-star {
 	font-size: 20px;
-	margin-top: 30px;
+	margin-top: 4px;
 	&:hover {
 		cursor: pointer;
 		color: #cecece;
