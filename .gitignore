@@ -24,3 +24,7 @@ test2.png
 test3.png
 test4.png
 test5.png
+
+coverage/.last_run.json
+coverage/.resultset.json
+coverage/index.html
