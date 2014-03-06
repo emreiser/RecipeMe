@@ -140,7 +140,7 @@ RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
 };
 
 RecipeMe.renderAttribution = function() {
-  var $yummly_attribution = $('<div id="yummly-att">'),
+  var $yummly_attribution = $('<div id="yummly-att" class="footer">'),
       $yummly_attribution_content = $('<small id="yummly-att-content"> Recipe search powered by <a href="http://www.yummly.com/recipes"><img alt="Yummly" src="http://static.yummly.com/api-logo.png"/></a></small>'),
       $container = $('.container');
 

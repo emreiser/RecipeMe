@@ -64,7 +64,6 @@ HOMEPAGE STYLES
 }
 
 
-
 .navbar {
 	margin-bottom: 0;
 }
@@ -90,6 +89,20 @@ p.basket_ingredient {
 	border: 1px solid #dd9125;
 	margin-bottom: 20px;
 }
+
+/*******************************
+RECIPES INDEX STYLES
+*******************************/
+#yummly-att {
+	font-style: italic;
+	padding: 1%;
+}
+
+.recipe-index-header {
+	vertical-align: middle;
+	color: #C0392B;
+}
+
 
 /*******************************
 RECIPES DISPLAY STYLES
@@ -139,12 +152,4 @@ RECIPES DISPLAY STYLES
 	padding-top: 57px;
 }
 
-#yummly-att {
-	font-style: italic;
-	padding: 1%;
-}
 
-.recipe-index-header {
-	vertical-align: middle;
-	color: #C0392B;
-}
