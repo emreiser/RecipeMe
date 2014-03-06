@@ -48,7 +48,6 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
   .done(function(data) {
     RecipeMe.renderAllRecipes(data.matches);
     console.log("got recipes")
-    //RecipeMe.sort_recipe_score(data,ingredent_list_from_basket);
   })
   .fail(function(data) {
     console.log("error");
@@ -63,7 +62,10 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
 RecipeMe.renderAllRecipes = function(recipes) {
   $('#content').text("");
   var $container_div = $('<div class="container">'),
-    l = recipes.length, favorite_array, $yummly_attribution = $('<div id="yummly-att">');
+                   l = recipes.length,
+       $header_title = $('<h1 class="recipe-index-header"> Here are Your Recipes </h1>'),
+         $header_div = $('<divclass="page-header">'),
+         favorite_array;
 
   RecipeMe.get_favorites(function(data) {
     console.log("success");
@@ -73,10 +75,9 @@ RecipeMe.renderAllRecipes = function(recipes) {
        favorite_array.push(data[j].yummlyid);
     }
 
-    $yummly_attribution.text("Recipe search powered by yummly");
-    $container_div.append($yummly_attribution);
+    $header_div.append($header_title);
+    $container_div.append($header_div);
     $('#content').append($container_div);
-
 
     if (l === 0) {
       $container_div.append('<h1>Sorry, your search did not return any recipes</h1>');
@@ -94,13 +95,14 @@ RecipeMe.renderAllRecipes = function(recipes) {
       }
     };
   });
+
+  RecipeMe.renderAttribution();
 };
 
 // renders the div for display on the index page
 RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
 
   var recipe = recipe,
-    $yummly_attribution = $('<div id="yummly-att">'),
     $recipe_div = $('<div class="col-sm-4 recipe thumbnail">'),
     $recipe_content = $('<div class="recipe-content dark-boxy" id="recipe' + recipe.id + '">'),
     $recipe_content_inner_title = $('<div class="col-sm-10">'),
@@ -137,8 +139,14 @@ RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
   });
 };
 
+RecipeMe.renderAttribution = function() {
+  var $yummly_attribution = $('<div id="yummly-att">'),
+      $yummly_attribution_content = $('<small id="yummly-att-content"> Recipe search powered by <a href="http://www.yummly.com/recipes"><img alt="Yummly" src="http://static.yummly.com/api-logo.png"/></a></small>'),
+      $container = $('.container');
 
-
+  $yummly_attribution.append($yummly_attribution_content);
+  $container.append($yummly_attribution);
+};
 
 
 
