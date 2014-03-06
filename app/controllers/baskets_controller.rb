@@ -18,8 +18,8 @@ class BasketsController < ApplicationController
 	end
 
 	def edit
-		binding.pry
 		@basket = Basket.find(params[:id])
+		@basket.ingredients = [];
 		render json: @basket
 	end
 

@@ -40,6 +40,8 @@ RecipeMe.displayIngredients = function(ingredients_list) {
       $basket_container = $('<div class="col-md-4" id="basket-container"><div class="page-header"><h1>Your Basket</h1></div></div>'),
       $basket_button = $('<button id="find-recipe" class="btn btn-block btn-custom disabled">Find Recipes</button>'),
       $basket_button_div = $('<div id="basket-button-div">'),
+      $clear_basket_button = $('<button id="clear-basket" class="btn btn-block btn-custom">Clear Basket</button>'),
+      $clear_basket_button_div = $('<div id="clear-basket-button-div">'),
       $container_div = $('<div class="container">'),
       i = 0,
       l = ingredients_list.length,
@@ -50,8 +52,9 @@ RecipeMe.displayIngredients = function(ingredients_list) {
   $tab_content.append($protein_pane, $vegetable_pane, $sauce_pane, $spice_pane, $dairy_pane, $starch_pane);
   $nav_tabs.append($protein_tab, $vegetable_tab, $sauce_tab, $spice_tab, $dairy_tab, $starch_tab);
   $ingred_div.append($nav_tabs, $tab_content);
+  $clear_basket_button_div.append($clear_basket_button);
   $basket_button_div.append($basket_button);
-  $basket_container.append($basket_button_div);
+  $basket_container.append($basket_button_div, $clear_basket_button_div);
   $container_div.append($ingred_div, $basket_container);
   $content.append($container_div);
 
@@ -80,13 +83,22 @@ RecipeMe.displayIngredients = function(ingredients_list) {
 
   $('#find-recipe').click(function(event){
     var basket_element = $('.basket-class' ),
-        basket_id = basket_element[0].id.split('_')[1],
+        basket_id = basket_element[0].id.split('_')[1];
+        // debugger;
         recipe_container_element = '<div id="recipes-index-content">';
     $('#content').text("");
     $('#content').append(recipe_container_element);
     RecipeMe.look_up_basket(basket_id);
 
   });
+
+
+  $('#clear-basket').click(function(event){
+    var basket_element = $('.basket-class' ),
+        basket_id = basket_element[0].id.split('_')[1];
+    RecipeMe.clear_basket(basket_id);
+  });
+
 };
 
 

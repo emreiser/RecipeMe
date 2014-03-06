@@ -27,6 +27,19 @@ RecipeMe.look_up_basket = function(basket_id){
   })
 };
 
+RecipeMe.clear_basket = function(basket_id) {
+  $.ajax({
+    url: '/baskets/' + basket_id +'/edit',
+    type: 'GET',
+    dataType: 'json'
+  })
+  .done(function(data) {
+    console.log(data);
+    RecipeMe.renderIngredients([], basket_id);
+
+  });
+}
+
 //parse out list of ingredients
 RecipeMe.list_ingredients_of_basket = function(data){
   var i = 0, ingredient_list = "";
