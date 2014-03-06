@@ -63,7 +63,7 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
 RecipeMe.renderAllRecipes = function(recipes) {
   $('#content').text("");
   var $container_div = $('<div class="container">'),
-    l = recipes.length, favorite_array;
+    l = recipes.length, favorite_array, $yummly_attribution = $('<div id="yummly-att">');
 
   RecipeMe.get_favorites(function(data) {
     console.log("success");
@@ -73,7 +73,10 @@ RecipeMe.renderAllRecipes = function(recipes) {
        favorite_array.push(data[j].yummlyid);
     }
 
+    $yummly_attribution.text("Recipe search powered by yummly");
+    $container_div.append($yummly_attribution);
     $('#content').append($container_div);
+
 
     if (l === 0) {
       $container_div.append('<h1>Sorry, your search did not return any recipes</h1>');
@@ -97,6 +100,7 @@ RecipeMe.renderAllRecipes = function(recipes) {
 RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
 
   var recipe = recipe,
+    $yummly_attribution = $('<div id="yummly-att">'),
     $recipe_div = $('<div class="col-sm-4 recipe thumbnail">'),
     $recipe_content = $('<div class="recipe-content dark-boxy" id="recipe' + recipe.id + '">'),
     $recipe_content_inner_title = $('<div class="col-sm-10">'),
@@ -127,14 +131,10 @@ RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
 
     $recipe_title.click(function(event) {
       event.preventDefault();
-      debugger;
       RecipeMe.look_up_recipe(data.id);
       return false;
     });
   });
-
-
-
 };
 
 
