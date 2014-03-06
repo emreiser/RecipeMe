@@ -57,6 +57,7 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
     data: {ingredients: ingredent_list_from_basket }
   })
   .done(function(data) {
+    debugger;
     RecipeMe.renderAllRecipes(data.matches);
     console.log("got recipes")
   })
@@ -89,24 +90,6 @@ RecipeMe.renderAllRecipes = function(recipes) {
   $container_div.append($header_div);
   $container_div.append(RecipeMe.renderAttribution());
   $('#content').append($container_div);
-
-
-  if (l === 0) {
-    $container_div.text("");
-    $container_div.append('<h1>Sorry, your search did not return any recipes</h1>');
-    $basket_button = $('<button class="btn btn-lg btn-warning">Modify your search</button>');
-    $container_div.append($basket_button);
-    $basket_button.click(function(event) {
-      event.preventDefault();
-      RecipeMe.getIngredients();
-      return false;
-    })
-  } else {
-    var l = recipes.length, i = 0;
-    for(; i < l; i++) {
-      RecipeMe.renderRecipe(recipes[i], $container_div, favorite_array);
-    }
-  };
 
   RecipeMe.get_favorites(function(data) {
     console.log("success");
