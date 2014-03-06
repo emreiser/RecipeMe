@@ -35,7 +35,7 @@ RecipeMe.displayIngredients = function(ingredients_list) {
       $basket_button_div = $('<div id="basket-button-div" class="col-sm-12">'),
       $clear_basket_button = $('<button id="clear-basket" class="btn btn-block btn-danger basket-btn">Clear Basket</button>'),
       $clear_basket_button_div = $('<div id="clear-basket-button-div" class="col-sm-6 no-padding">'),
-      $container_div = $('<div class="container">'),
+      $container_div = $('<div class="container margin-bottom">'),
       $div_row = $('<div class="row">'),
       i = 0,
       l = ingredients_list.length,
