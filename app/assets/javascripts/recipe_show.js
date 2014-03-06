@@ -67,7 +67,7 @@ RecipeMe.list_ingredients_for_recipe = function(ingredients){
 RecipeMe.render_side_bar = function(recipe){
   var this_recipe = recipe,
       $fav_button = $('<button class="btn btn-custom btn-block">Add favorite</button>'),
-      $recipe_external_url = $('<a class="btn btn-block btn-custom margin-bottom" id="recipe_url_' + recipe.id + '" href="http://www.yummly.com/recipe/external/' + recipe.yummlyid + '">View Recipe</a>'),
+      $recipe_external_url = $('<a class="btn btn-block btn-custom margin-bottom" target="_blank" id="recipe_url_' + recipe.id + '" href="http://www.yummly.com/recipe/external/' + recipe.yummlyid + '">View Recipe</a>'),
       $side_bar_div = $('<div class="col-sm-3 col-sm-offset-1 recipe-side-bar" id="recipe_side_bar' + recipe.id + '">'),
       $side_bar_header = $('<div class="page-header side-bar-header"></div>');
 
