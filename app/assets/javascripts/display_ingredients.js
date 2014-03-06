@@ -38,7 +38,7 @@ RecipeMe.displayIngredients = function(ingredients_list) {
       $starch_pane = $('<div class="tab-pane" id="starch"></div>'),
       $ingred_div = $('<div class="col-md-8" id="ingred-div"><div class="page-header"><h1>Your Ingredients</div></div>'),
       $basket_container = $('<div class="col-md-4" id="basket-container"><div class="page-header"><h1>Your Basket</h1></div></div>'),
-      $basket_button = $('<button id="find-recipe" class="btn btn-block btn-custom disabled">Find Recipes</button>'),
+      $basket_button = $('<button id="find-recipe" class="btn btn-block btn-custom margin-bottom disabled">Find Recipes</button>'),
       $basket_button_div = $('<div id="basket-button-div">'),
       $clear_basket_button = $('<button id="clear-basket" class="btn btn-block btn-custom">Clear Basket</button>'),
       $clear_basket_button_div = $('<div id="clear-basket-button-div">'),

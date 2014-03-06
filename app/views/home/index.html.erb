@@ -1,5 +1,12 @@
 <script>
 	$(document).ready(function() {
-		RecipeMe.buildHomepage();
+
+		var fromFavorite = $('body').data('favorite');
+		if (fromFavorite === true){
+			$('body').data('favorite', false);
+			$('#enter-ingreds').trigger('click');
+		}else{
+			RecipeMe.buildHomepage();
+		}
 	});
 </script>

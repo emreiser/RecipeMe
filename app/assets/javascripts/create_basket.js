@@ -40,7 +40,6 @@ RecipeMe.createBasket = function() {
 				console.log("success");
 			})
 			.fail(function(data) {
-				debugger;
 				console.log("error");
 			});
 		} else {
