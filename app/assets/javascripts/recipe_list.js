@@ -59,7 +59,7 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
   .done(function(data) {
     debugger;
     RecipeMe.renderAllRecipes(data.matches);
-    console.log("got recipes")
+    console.log(data);
   })
   .fail(function(data) {
     console.log("error");
@@ -124,12 +124,13 @@ RecipeMe.renderAllRecipes = function(recipes) {
 RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
 
   var recipe = recipe,
+    recipe_image = recipe.smallImageUrls[0] || '/assets/recipeme.png',
     $recipe_div = $('<div class="col-sm-4 recipe thumbnail">'),
     $recipe_content = $('<div class="recipe-content dark-boxy" id="recipe' + recipe.id + '">'),
     $recipe_content_inner_title = $('<div class="col-sm-10">'),
     $recipe_content_inner_favorite = $('<div class="col-sm-2">'),
     $recipe_title = $("<a class='recipe_title'>" + recipe.recipeName + "</h3>"),
-    $recipe_img = $('<img class="recipe-img" src=' + recipe.smallImageUrls[0] + '>'),
+    $recipe_img = $('<img class="recipe-img" src="' + recipe_image + '">'),
     $recipe_favor = $('<span class="glyphicon glyphicon-star"></span>');
 
   // Add recipe to database
