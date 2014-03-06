@@ -48,7 +48,6 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
   .done(function(data) {
     RecipeMe.renderAllRecipes(data.matches);
     console.log("got recipes")
-    //RecipeMe.sort_recipe_score(data,ingredent_list_from_basket);
   })
   .fail(function(data) {
     console.log("error");
@@ -63,7 +62,33 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
 RecipeMe.renderAllRecipes = function(recipes) {
   $('#content').text("");
   var $container_div = $('<div class="container">'),
-    l = recipes.length, favorite_array;
+                   l = recipes.length,
+       $header_title = $('<h1 class="recipe-index-header"> Here are Your Recipes </h1>'),
+         $header_div = $('<divclass="page-header">'),
+         favorite_array;
+
+  $header_div.append($header_title);
+  $container_div.append($header_div);
+  $container_div.append(RecipeMe.renderAttribution());
+  $('#content').append($container_div);
+
+
+  if (l === 0) {
+    $container_div.text("");
+    $container_div.append('<h1>Sorry, your search did not return any recipes</h1>');
+    $basket_button = $('<button class="btn btn-lg btn-warning">Modify your search</button>');
+    $container_div.append($basket_button);
+    $basket_button.click(function(event) {
+      event.preventDefault();
+      RecipeMe.getIngredients();
+      return false;
+    })
+  } else {
+    var l = recipes.length, i = 0;
+    for(; i < l; i++) {
+      RecipeMe.renderRecipe(recipes[i], $container_div, favorite_array);
+    }
+  };
 
   RecipeMe.get_favorites(function(data) {
     console.log("success");
@@ -73,9 +98,8 @@ RecipeMe.renderAllRecipes = function(recipes) {
        favorite_array.push(data[j].yummlyid);
     }
 
-    $('#content').append($container_div);
-
     if (l === 0) {
+      $container_div.text("");
       $container_div.append('<h1>Sorry, your search did not return any recipes</h1>');
       $basket_button = $('<button class="btn btn-lg btn-warning">Modify your search</button>');
       $container_div.append($basket_button);
@@ -91,6 +115,8 @@ RecipeMe.renderAllRecipes = function(recipes) {
       }
     };
   });
+
+
 };
 
 // renders the div for display on the index page
@@ -131,13 +157,16 @@ RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
       return false;
     });
   });
-
-
-
 };
 
+RecipeMe.renderAttribution = function() {
+  var $yummly_attribution = $('<div id="yummly-att" class="footer">'),
+      $yummly_attribution_content = $('<small id="yummly-att-content"> Recipe search powered by <a href="http://www.yummly.com/recipes"><img alt="Yummly" src="http://static.yummly.com/api-logo.png"/></a></small>'),
+      $container = $('.container');
 
-
+  $yummly_attribution.append($yummly_attribution_content);
+  return $yummly_attribution;
+};
 
 
 
