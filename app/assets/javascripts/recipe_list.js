@@ -57,7 +57,6 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
     data: {ingredients: ingredent_list_from_basket }
   })
   .done(function(data) {
-    debugger;
     RecipeMe.renderAllRecipes(data.matches);
     console.log(data);
   })
@@ -98,8 +97,9 @@ RecipeMe.renderAllRecipes = function(recipes) {
     for (; j < k; j++){
        favorite_array.push(data[j].yummlyid);
     }
+    //debugger;
 
-    if (l === 0) {
+    if (recipes.length === 0) {
       $container_div.text("");
       $container_div.append('<h1>Sorry, your search did not return any recipes</h1>');
       $basket_button = $('<button class="btn btn-lg btn-warning">Modify your search</button>');

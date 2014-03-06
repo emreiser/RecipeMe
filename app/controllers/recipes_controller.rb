@@ -16,15 +16,12 @@ class RecipesController < ApplicationController
 
   def create
   	@recipe = Recipe.new(recipe_params)
-    if (@recipe.imageurl == nil) || (@recipe.imageurl == "")
-      @recipe.imageurl = ActionController::Base.helpers.asset_path('recipeme.png')
-    end
   	if @recipe.save
-  	 render json: @recipe
+  	  @recipe
     else
       @recipe = Recipe.find_by_yummlyid(recipe_params[:yummlyid])
-      render json: @recipe
     end
+    render json: @recipe
   end
 
   def show
