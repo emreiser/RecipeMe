@@ -38,6 +38,10 @@ GENERAL STYLES
 	margin-bottom: 20px !important;
 }
 
+.no-padding {
+	padding: 0 !important;
+}
+
 .centered {
 	position: fixed;
 	top: 50%;
@@ -100,10 +104,21 @@ p.basket_ingredient {
 	background-color: #eea236;
 	color: #fff;
 	border: 1px solid #dd9125;
+	&:hover {
+		background-color: #dd9125;
+		border: 1px solid #cc8014;
+		color: #FFF;
+	}
 }
 
 .nav-tabs > li {
 	font-size: 21px;
+}
+
+.basket-btn {
+	font-size: 21px;
+	font-weight: bold;
+	border-radius: 0;
 }
 
 /*******************************
