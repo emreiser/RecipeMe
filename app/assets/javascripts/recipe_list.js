@@ -23,10 +23,7 @@ RecipeMe.look_up_basket = function(basket_id){
   .done(function(data) {
     console.log(data);
     RecipeMe.list_ingredients_of_basket(data);
-  })
-  .fail(function(data) {
-    console.log("error");
-  })
+  });
 };
 
 RecipeMe.clear_basket = function(basket_id) {
@@ -36,7 +33,6 @@ RecipeMe.clear_basket = function(basket_id) {
     dataType: 'json'
   })
   .done(function(data) {
-    console.log(data);
     RecipeMe.renderIngredients([], basket_id);
     RecipeMe.button_check([]);
   });

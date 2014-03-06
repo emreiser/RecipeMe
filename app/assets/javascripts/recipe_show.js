@@ -14,10 +14,7 @@ RecipeMe.look_up_recipe = function(recipe_id){
   .done(function(data) {
     console.log("got the recipe");
     RecipeMe.render_recipe_show_info(data);
-  })
-  .fail(function(data) {
-    console.log("error");
-  })
+  });
 };
 
 // renders the div for display on the index page
