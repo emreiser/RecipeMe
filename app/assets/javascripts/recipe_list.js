@@ -14,13 +14,7 @@ RecipeMe.button_check = function(ingredients){
 
 // parses out the ingredients
 RecipeMe.look_up_basket = function(basket_id){
-  $.ajax({
-    url: '/baskets/' + basket_id,
-    type: 'PUT',
-    dataType: 'json',
-    data: { basket: {id: basket_id }}
-  })
-  .done(function(data) {
+  RecipeMe.updateBasket(function(data){
     RecipeMe.list_ingredients_of_basket(data);
   });
 };

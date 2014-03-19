@@ -9,7 +9,19 @@ RecipeMe.renderBasket = function(basket) {
 	$('button.ingredient').click(function(event) {
 		event.preventDefault();
 		var ingredient_id = event.target.id.split('_')[1];
-		RecipeMe.addIngredient(basket.id, ingredient_id);
+		RecipeMe.toggleIngredient(basket.id, ingredient_id);
 		return false;
 		});
+};
+
+RecipeMe.updateBasket = function(callback) {
+	$.ajax({
+		url: '/baskets/' + basket_id,
+		type: 'PUT',
+		dataType: 'json',
+		data: { basket: {id: basket_id }}
+	})
+	.done(function(data) {
+		callback(data);
+	});
 };

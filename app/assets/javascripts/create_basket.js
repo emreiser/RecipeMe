@@ -13,13 +13,7 @@ RecipeMe.createBasket = function() {
 		var index = ($.inArray('basket_id', one_d_cookies)),
 			basket_id = cookies[index][1];
 		if (basket_id !== 'undefined') {
-			$.ajax({
-				url: '/baskets/' + basket_id,
-				type: 'PUT',
-				dataType: 'json',
-				data: { basket: {id: basket_id }}
-			})
-			.done(function(data) {
+			RecipeMe.updateBasket(function(data) {
 				var basket_element = $('<div class="basket-class" id="basket_' + basket_id + '" >');
 				RecipeMe.setCookie(basket_id);
 				RecipeMe.button_check(data);
@@ -29,10 +23,11 @@ RecipeMe.createBasket = function() {
 				$('button.ingredient').click(function(event) {
 					event.preventDefault();
 					var ingredient_id = event.target.id.split('_')[1];
-					RecipeMe.addIngredient(basket_id, ingredient_id);
+					RecipeMe.toggleIngredient(basket_id, ingredient_id);
 					RecipeMe.button_check(ingredient_id);
 					return false;
 				});
+
 			});
 		} else {
 			$.ajax({
@@ -57,8 +52,7 @@ RecipeMe.createBasket = function() {
 	}
 };
 
-
-RecipeMe.addIngredient = function(basket_id, ingredient_id) {
+RecipeMe.toggleIngredient = function(basket_id, ingredient_id) {
 	$.ajax({
 		url: '/baskets/' + basket_id,
 		type: 'PUT',
@@ -115,22 +109,10 @@ RecipeMe.renderIngredient = function(container, ingredient) {
 		id = container[0].id;
 		id = id.split("_")[1];
 
-		RecipeMe.removeIngredient(id, ingredient.id);
+		RecipeMe.toggleIngredient(id, ingredient.id);
 	});
 };
 
-RecipeMe.removeIngredient = function(basket_id, ingredient_id) {
-	$.ajax({
-		url: '/baskets/' + basket_id,
-		type: 'PUT',
-		dataType: 'json',
-		data: { basket: {id: basket_id, ingredient: ingredient_id }}
-	})
-	.done(function(data) {
-		RecipeMe.renderIngredients(data, basket_id);
-		RecipeMe.button_check(data);
-	});
-};
 
 RecipeMe.setCookie = function(id) {
 	document.cookie = "basket_id=" + escape(id);
