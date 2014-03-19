@@ -13,8 +13,9 @@ RecipeMe.get_favorites = function(callback){
 };
 
 RecipeMe.add_favorite = function(recipe) {
+  var id_number;
   if (typeof recipe.id === 'number') {
-    var id_number = recipe.id;
+    id_number = recipe.id;
   } else {
     id_number = null;
   }

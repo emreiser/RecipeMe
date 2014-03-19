@@ -35,7 +35,7 @@ RecipeMe.clear_basket = function(basket_id) {
     RecipeMe.renderIngredients([], basket_id);
     RecipeMe.button_check([]);
   });
-}
+};
 
 //parse out list of ingredients
 RecipeMe.list_ingredients_of_basket = function(data){
@@ -57,9 +57,7 @@ RecipeMe.requestRecipes = function(ingredent_list_from_basket) {
   })
   .done(function(data) {
     RecipeMe.renderAllRecipes(data.matches);
-  })
-  .fail(function(data) {
-  })
+  });
 };
 
 // iterates and runs over the array to render
@@ -99,13 +97,13 @@ RecipeMe.renderAllRecipes = function(recipes) {
         event.preventDefault();
         RecipeMe.getIngredients();
         return false;
-      })
+      });
     } else {
       var l = recipes.length, i = 0;
       for(; i < l; i++) {
         RecipeMe.renderRecipe(recipes[i], $container_div, favorite_array);
       }
-    };
+    }
   });
 
 
@@ -114,8 +112,7 @@ RecipeMe.renderAllRecipes = function(recipes) {
 // renders the div for display on the index page
 RecipeMe.renderRecipe = function(recipe, container, favorite_array) {
 
-  var recipe = recipe,
-    recipe_image = recipe.smallImageUrls[0] || '/recipeme.png',
+  var recipe_image = recipe.smallImageUrls[0] || '/recipeme.png',
     $recipe_div = $('<div class="col-sm-4 recipe thumbnail">'),
     $recipe_content = $('<div class="recipe-content dark-boxy" id="recipe' + recipe.id + '">'),
     $recipe_content_inner_title = $('<div class="col-sm-10">'),

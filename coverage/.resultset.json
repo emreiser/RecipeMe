@@ -38,17 +38,17 @@
         null,
         null
       ],
-      "/Users/michaelstone/General Assembly/Code/project_2/RecipeMe/app/controllers/home_controller.rb": [
-        1,
-        1,
-        null,
-        null
-      ],
       "/Users/michaelstone/General Assembly/Code/project_2/RecipeMe/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
+        null
+      ],
+      "/Users/michaelstone/General Assembly/Code/project_2/RecipeMe/app/controllers/home_controller.rb": [
+        1,
+        1,
+        null,
         null
       ],
       "/Users/michaelstone/General Assembly/Code/project_2/RecipeMe/app/controllers/ingredients_controller.rb": [
@@ -102,6 +102,6 @@
         null
       ]
     },
-    "timestamp": 1395263359
+    "timestamp": 1395264270
   }
 }

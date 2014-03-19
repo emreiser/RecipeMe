@@ -73,7 +73,7 @@ RecipeMe.displayIngredients = function(ingredients_list) {
     }
   }
 
-  basket = RecipeMe.createBasket();
+  RecipeMe.createBasket();
 
   $('#find-recipe').click(function(event){
     event.preventDefault();

@@ -1,4 +1,4 @@
-var RecipeMe = RecipeMe || {}
+var RecipeMe = RecipeMe || {};
 
 RecipeMe.addRecipe = function(recipe, callback) {
 	$.ajax({

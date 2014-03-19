@@ -27,7 +27,6 @@ RecipeMe.render_recipe_show_info = function(recipe) {
       $ingredients_header = $('<h2>Ingredients</h2>'),
       $recipe_ingredient_list = RecipeMe.list_ingredients_for_recipe(recipe.ingredientlist),
       $recipe_show_content = $('<div class="col-sm-8 recipe-show" id="recipe_' + recipe.id + '">'),
-      $recipe_ingredient_list,
       $recipe_side_bar;
 
   $content.text("");
@@ -38,12 +37,11 @@ RecipeMe.render_recipe_show_info = function(recipe) {
   $recipe_show_content.append($ingredients_header, $recipe_ingredient_list);
   $container.append($recipe_show_content, $recipe_side_bar);
   $content.append($container);
-
 };
 
 // renderd the lsit of recipes
 RecipeMe.list_ingredients_for_recipe = function(ingredients){
-  var ingredients = ingredients.split(':'),
+  var ingredients_array = ingredients.split(':'),
     i = 0,
     $ingredient_table = $('<table class="table">'),
     $ingredient_table_body = $('<tbody>');
@@ -51,17 +49,16 @@ RecipeMe.list_ingredients_for_recipe = function(ingredients){
   // Put table together
   $ingredient_table.append($ingredient_table_body);
 
-  for(; i < ingredients.length; i++) {
+  for(; i < ingredients_array.length; i++) {
       var $row = $('<tr>'),
         $td = $('<td>'),
-        ingredient = ingredients[i];
-      $td.append('<p class="lead">' + ingredients[i] + '</p>');
+        ingredient = ingredients_array[i];
+      $td.append('<p class="lead">' + ingredients_array[i] + '</p>');
       $row.append($td);
       $ingredient_table_body.append($row);
     }
   return $ingredient_table;
 };
-
 
 RecipeMe.render_side_bar = function(recipe){
   var this_recipe = recipe,
@@ -86,11 +83,9 @@ RecipeMe.render_side_bar = function(recipe){
     });
   });
 
-
-
   $side_bar_div.append($side_bar_header, $fav_button, $recipe_external_url);
   return $side_bar_div;
-}
+};
 
 
 
