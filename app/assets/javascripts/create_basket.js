@@ -2,7 +2,7 @@ var RecipeMe = RecipeMe || {};
 
 RecipeMe.createBasket = function() {
 	var cookies = this.searchCookies(document.cookie),
-		  one_d_cookies = [];
+	one_d_cookies = [];
 
 
 	if (cookies) {
@@ -30,7 +30,7 @@ RecipeMe.createBasket = function() {
 				$('button.ingredient').click(function(event) {
 					event.preventDefault();
 					var ingredient_id = event.target.id.split('_')[1];
-					RecipeMe.addIngredient(basket_id, ingredient_id);
+					RecipeMe.updateBasket(basket_id, ingredient_id);
 					RecipeMe.button_check(ingredient_id);
 					return false;
 				});
@@ -50,7 +50,7 @@ RecipeMe.createBasket = function() {
 				$('button.ingredient').click(function(event) {
 					event.preventDefault();
 					var ingredient_id = event.target.id.split('_')[1];
-					RecipeMe.addIngredient(basket.id, ingredient_id);
+					RecipeMe.updateBasket(basket.id, ingredient_id);
 					return false;
 				});
 			});
@@ -71,15 +71,15 @@ RecipeMe.createBasket = function() {
 			$('button.ingredient').click(function(event) {
 				event.preventDefault();
 				var ingredient_id = event.target.id.split('_')[1];
-				RecipeMe.addIngredient(basket.id, ingredient_id);
+				RecipeMe.updateBasket(basket.id, ingredient_id);
 				return false;
-				})
+				});
 		});
 	}
 };
 
 
-RecipeMe.addIngredient = function(basket_id, ingredient_id) {
+RecipeMe.updateBasket = function(basket_id, ingredient_id) {
 	$.ajax({
 		url: '/baskets/' + basket_id,
 		type: 'PUT',
@@ -91,6 +91,7 @@ RecipeMe.addIngredient = function(basket_id, ingredient_id) {
 		RecipeMe.button_check(data);
 	});
 };
+
 
 RecipeMe.handleData = function(basket) {
 	var basket = basket;
@@ -108,6 +109,8 @@ RecipeMe.renderIngredients = function(ingredients, basket_id) {
 		RecipeMe.renderIngredient(element, ingredient);
 	}
 };
+
+
 
 RecipeMe.renderIngredient = function(container, ingredient) {
 	if(ingredient.ingred_type === 'protein'){
@@ -136,20 +139,7 @@ RecipeMe.renderIngredient = function(container, ingredient) {
 		id = container[0].id;
 		id = id.split("_")[1];
 
-		RecipeMe.removeIngredient(id, ingredient.id);
-	});
-};
-
-RecipeMe.removeIngredient = function(basket_id, ingredient_id) {
-	$.ajax({
-		url: '/baskets/' + basket_id,
-		type: 'PUT',
-		dataType: 'json',
-		data: { basket: {id: basket_id, ingredient: ingredient_id }}
-	})
-	.done(function(data) {
-		RecipeMe.renderIngredients(data, basket_id);
-		RecipeMe.button_check(data);
+		RecipeMe.updateBasket(id, ingredient.id);
 	});
 };
 
