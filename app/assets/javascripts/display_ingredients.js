@@ -48,7 +48,7 @@ RecipeMe.displayIngredients = function(ingredients_list) {
   $ingred_div.append($nav_tabs, $tab_content);
   $clear_basket_button_div.append($clear_basket_button);
   $find_recipe_button_div.append($basket_button);
-  $div_row.append($find_recipe_button_div, $clear_basket_button_div)
+  $div_row.append($find_recipe_button_div, $clear_basket_button_div);
   $basket_button_div.append($div_row);
   $basket_container.append($basket_button_div);
   $container_div.append($ingred_div, $basket_container);
@@ -71,7 +71,7 @@ RecipeMe.displayIngredients = function(ingredients_list) {
     } else {
       $("#" + ingredient.ingred_type).append($('<button class="btn btn-default btn-block ingredient" data-toggle="button" id="ingredient_' + ingredient.id + '">' + ingredient.name + '</button>'));
     }
-  };
+  }
 
   basket = RecipeMe.createBasket();
 

@@ -8,15 +8,15 @@ feature 'User can select Ingredients for the Basket', :js do
     click_on "Enter Ingredients"
     expect(page).to have_content "Your Ingredients"
     expect(page).to have_content "Your Basket"
-    expect(page).to have_content "steak"
+    expect(page).to have_content "Steak"
     # puts "Ingredients are #{Ingredient.all.map(&:name).join(',')}"
-    click_on "steak"
+    click_on "Steak"
     # save_and_open_page
     # sleep(5) # nopes still fails
     #sleep(20) # seems to pass when this is the case
     find('#basket-container')
     within('#basket-container') do
-      expect(page).to have_content('steak')
+      expect(page).to have_content('Steak')
       expect(page).to have_css("#basket_ingredient_1")
     end
     #page.save_screenshot('test.png')
