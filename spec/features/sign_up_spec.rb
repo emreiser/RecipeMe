@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature "Sign_up" do
-  
+
   scenario "a vistor" do
     visit new_user_registration_path
     fill_in 'Email', with: 'joe@example.com'
