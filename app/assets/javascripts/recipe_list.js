@@ -14,7 +14,7 @@ RecipeMe.button_check = function(ingredients){
 
 // parses out the ingredients
 RecipeMe.look_up_basket = function(basket_id){
-  RecipeMe.updateBasket(function(data){
+  RecipeMe.updateBasket( basket_id, function(data){
     RecipeMe.list_ingredients_of_basket(data);
   });
 };

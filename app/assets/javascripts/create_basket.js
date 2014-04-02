@@ -13,7 +13,7 @@ RecipeMe.createBasket = function() {
 		var index = ($.inArray('basket_id', one_d_cookies)),
 			basket_id = cookies[index][1];
 		if (basket_id !== 'undefined') {
-			RecipeMe.updateBasket(function(data) {
+			RecipeMe.updateBasket(basket_id, function(data) {
 				var basket_element = $('<div class="basket-class" id="basket_' + basket_id + '" >');
 				RecipeMe.setCookie(basket_id);
 				RecipeMe.button_check(data);

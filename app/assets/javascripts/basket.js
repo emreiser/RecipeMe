@@ -14,7 +14,7 @@ RecipeMe.renderBasket = function(basket) {
 		});
 };
 
-RecipeMe.updateBasket = function(callback) {
+RecipeMe.updateBasket = function( basket_id, callback) {
 	$.ajax({
 		url: '/baskets/' + basket_id,
 		type: 'PUT',
