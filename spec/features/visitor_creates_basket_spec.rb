@@ -13,7 +13,7 @@ feature 'User can select Ingredients for the Basket', :js do
     click_on "Steak"
     # save_and_open_page
     # sleep(5) # nopes still fails
-    #sleep(20) # seems to pass when this is the case
+    # sleep(20) # seems to pass when this is the case
     find('#basket-container')
     within('#basket-container') do
       expect(page).to have_content('Steak')
